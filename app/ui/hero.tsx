@@ -1,4 +1,5 @@
 import styles from './hero.module.css';
+import logo from '../../public/logo.svg'
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -24,8 +25,13 @@ export default function Hero() {
       </div>
 
       {/* Background decorative text */}
-      <div className={styles.backgroundText}>Casia</div>
-
+      <Image
+        className={styles.logo}
+        src={logo}
+        width={500}
+        height={500}
+        alt="Logo"
+      />
       {/* Curved design elements */}
 
       <div className={styles.heroContentContainer}>
@@ -39,7 +45,7 @@ export default function Hero() {
             curated our gallery or upload your own!
           </p>
 
-          <Link href="/gallery" className={styles.ctaButton}>
+          <Link href="/gallery" className={`${styles.button} ${styles.ctaButton}`}>
             START MY ORDER →
           </Link>
 
