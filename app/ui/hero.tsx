@@ -1,3 +1,4 @@
+import '../globals.css';
 import styles from './hero.module.css';
 import logo from '../../public/logo.svg'
 import Link from 'next/link';
@@ -19,10 +20,10 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.fluidBackground}>
-        <div className={styles.boxBottom}></div>
-        <div className={styles.curveBottom}></div>
-      </div>
+      {/* Curved design elements */}
+      <div className={styles.fluidBackground}></div>
+      <div className={styles.boxBottom}></div>
+      <div className={styles.curveBottom}></div>
 
       {/* Background decorative text */}
       <Image
@@ -32,24 +33,20 @@ export default function Hero() {
         height={500}
         alt="Logo"
       />
-      {/* Curved design elements */}
 
       <div className={styles.heroContentContainer}>
 
         {/* Hero Content */}
         <div className={styles.heroContent}>
-          <p className={styles.tagline}>IT'S THE LITTLE THINGS THAT COUNT</p>
+          <p className={styles.tagline}>It's the litle things that count</p>
           <h1 className={styles.title}>Create your own custom magnets</h1>
           <p className={styles.subtitle}>
-            Turn your favorite memories into stunning 2x2 magnets. Choose from<br />
-            curated our gallery or upload your own!
+            Turn your favorite memories into stunning 2x2 magnets. Choose from our curated gallery or upload your own!
           </p>
 
-          <Link href="/gallery" className={`${styles.button} ${styles.ctaButton}`}>
-            START MY ORDER →
-          </Link>
+          <Link href="/gallery" className={`button ${styles.ctaButton}`}>START MY ORDER →</Link>
 
-          <p className={styles.orderInfo}>* One order includes 9 magnets for $25 + shipping</p>
+          <p className={styles.subText}>* One order includes 9 magnets for $25 + shipping</p>
         </div>
 
       </div>

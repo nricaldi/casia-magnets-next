@@ -1,199 +1,146 @@
+
 .hero {
-  background-color: var(--background);
-  color: var(--foreground);
-  height: 80vh;
+  --curve-radius: 125px;
+  --header-height: 88px;
+
+  background-color: var(--white);
+  color: var(--white);
+  height: calc(100svh - var(--header-height));
   max-height: 1440px;
   position: relative;
+  padding-bottom: var(--curve-radius);
+  width: 100%;
 }
 
 .fluidBackground {
+  --header-height: 88px;
+
   position: absolute;
-  height: 80%;
+  height: calc(100% - var(--curve-radius));
   width: 100%;
-  background-color: var(--foreground);
-  border-bottom-right-radius: 185px;
+  background-color: var(--black);
+  border-bottom-right-radius: var(--curve-radius);
 }
 
 .logo {
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 0;
+  left: -5%;
   user-select: none;
   pointer-events: none;
-  z-index: 1;
   font-family: serif;
+  z-index: 1;
 }
 
 .curveBottom {
-  background: var(--background);
+  background: var(--white);
   border-radius: 0 100% 0 0;
-  bottom: -185px;
-  height: 185px;
+  bottom: 0;
+  height: var(--curve-radius);
   left: 0;
   position: absolute;
   transform: rotate(-90deg);
-  width: 185px;
+  width: var(--curve-radius);
   z-index: 1;
 }
 
 .boxBottom {
-  background: var(--foreground);
-  bottom: -185px;
-  height: 185px;
+  background: var(--black);
+  bottom: 0;
+  height: var(--curve-radius);
   left: 0;
   position: absolute;
-  width: 185px;
+  width: var(--curve-radius);
   z-index: 1;
 }
 
 .heroContentContainer {
   display: grid;
-  height: calc(100% - (185px * 2));
+  height: 100%;
+  margin: auto;
+  padding: 1rem;
   place-items: center;
   position: relative;
   z-index: 2;
 }
 
 .heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroContent * {
   text-align: center;
 }
 
 .tagline {
-  font-size: 1.25rem;
-  letter-spacing: 2px;
-  color: #888;
-  margin-bottom: 0.5rem;
+  color: var(--gray-dark);
+  font-size: 1rem;
   font-weight: 400;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
 .title {
-  font-size: 4rem;
-  color: var(--background);
+  color: var(--white);
+  font-size: 1.75rem;
   font-weight: 600;
-  margin: 0 0 1.5rem 0;
   line-height: 1.2;
+  margin: 0 0 1rem 0;
 }
 
 .subtitle {
-  font-size: 1rem;
-  color: #ccc;
+  font-size: 0.75rem;
+  color: var(--gray);
+  max-width: 350px;
+  margin: 0 auto;
   margin-bottom: 2.5rem;
-  line-height: 1.6;
+}
+
+.button {
+  display: flex;
+  border: 1px solid;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
 }
 
 .ctaButton {
-  display: inline-block;
-  background: white;
-  color: #1a1a1a;
-  padding: 0.5rem 1.5rem;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  border-radius: .75rem;
-  transition: all 0.3s ease;
+  background: var(--white);
+  color: var(--black);
   margin-bottom: 1rem;
 }
 
-.ctaButton:hover {
-  background: #f0f0f0;
-  transform: translateY(-2px);
-}
-
-.orderInfo {
-  font-size: 0.85rem;
-  color: #888;
-  margin: 0;
-}
-
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 0 auto 3rem;
-}
-
-.imageCard {
-  position: relative;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.imageCard:hover {
-  transform: scale(1.05);
-}
-
-.imageCard img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.featuredTag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #ff4444;
-  color: white;
-  padding: 4px 8px;
+.subText {
   font-size: 0.75rem;
-  font-weight: 600;
-  border-radius: 4px;
+  color: var(--gray-dark);
 }
 
-.addButton {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: #333;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
+@media (min-width: 768px) {
+  .logo {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    height: 600px;
+    width: 600px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+  }
 
-.addButton:hover {
-  background: white;
-  transform: scale(1.1);
-}
-
-.viewGallery {
-  text-align: center;
-}
-
-.viewGalleryButton {
-  display: inline-block;
-  background: #1a1a1a;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  border: 2px solid white;
-  transition: all 0.3s ease;
-}
-
-.viewGalleryButton:hover {
-  background: white;
-  color: #1a1a1a;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .backgroundText {
-    font-size: 12rem;
+  .heroContentContainer {
+    display: grid;
+    height: 100%;
+    margin: auto;
+    padding: 1rem;
+    place-items: center;
+    position: relative;
+    z-index: 2;
   }
 
   .title {
@@ -202,16 +149,74 @@
 
   .subtitle {
     font-size: 1rem;
+    max-width: 450px;
   }
 
-  .galleryGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  .button {
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .ctaButton {
+    background: var(--white);
+    color: var(--black);
+    margin-bottom: 1rem;
+  }
+
+  .subText {
+    font-size: 0.75rem;
+    color: var(--gray-dark);
+  }
+
+}
+
+
+/*
+
+.ctaButton {
+  background: white;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.ctaButton:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .logo {
+    top: 5%;
+    left: 5%;
+  }
+
+  .fluidBackground {
+    border-bottom-right-radius: 150px;
+  }
+
+  .boxBottom {
+    bottom: -150px;
+    height: 150px;
+    width: 150px;
   }
 
   .curveBottom {
-    width: 300px;
-    height: 200px;
+    bottom: -150px;
+    height: 150px;
+    width: 150px;
   }
 }
 
@@ -220,16 +225,9 @@
     padding: 4rem 1rem 2rem;
   }
 
-  .backgroundText {
-    font-size: 8rem;
-  }
-
   .title {
     font-size: 2rem;
   }
-
-  .galleryGrid {
-    grid-template-columns: 1fr;
-    max-width: 300px;
-  }
 }
+
+*/
