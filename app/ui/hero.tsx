@@ -25,7 +25,7 @@ export default function Hero() {
 
         {/* Hero Content */}
         <div className={styles.heroContent}>
-          <p className={styles.tagline}>It's the little things that count</p>
+          <p className={styles.tagline}>Its the litle things that count</p>
           <h1 className={styles.title}>Create your own custom magnets</h1>
           <p className={styles.subtitle}>
             Turn your favorite memories into stunning 2x2 magnets. Choose from our curated gallery or upload your own!
