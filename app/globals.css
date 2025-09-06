@@ -6,6 +6,8 @@
   --gray-dark: #696969;
 
   --black: #0A0B0B;
+
+  --max-container-width: 1000px;
 }
 
 html,

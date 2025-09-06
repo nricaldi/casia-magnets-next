@@ -1,0 +1,132 @@
+.gallery {
+  --border-radius: 6px;
+
+  background-color: var(--white);
+  display: grid;
+  margin-top: -316px;
+}
+
+/* layout */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+
+  grid-gap: 2rem;
+  margin: 0 auto;
+  max-width: var(--max-container-width);
+  z-index: 4;
+}
+
+.imageCard {
+  position: relative;
+  perspective: 900px;              /* parent gives perspective */
+  -webkit-perspective: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 1) Move the lift shadow to the container so it never blends with the image */
+.magnet {
+  position: relative;
+    /*
+    width: 300px;
+    height: 300px;
+   */
+  width: 100%;
+
+  border-radius: var(--border-radius);
+  overflow: hidden;
+
+  --shine-x: -100%;
+  --shine-y: -100%;
+  --scale: 1;
+
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 200ms ease;
+
+  /* OUTER real-world shadow (independent of image brightness) */
+  filter:
+    drop-shadow(0 8px 18px rgba(0,0,0,0.22))
+    drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+}
+
+/* keep the small pop on hover */
+.hover { --scale: 1.03; }
+
+/* 2) Image itself: remove big box-shadows (now handled by container)
+      keep a hairline rim so bright photos have a readable edge */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+
+  /* subtle 1px inner stroke that survives on bright images */
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.08),
+    inset 0 0 14px rgba(0,0,0,0.14); /* faint vignette to keep edges from washing out */
+  transform: translateZ(1px);
+}
+
+/* 3) Chamfer / wrap layer — now using multiply so it reads on light pixels */
+.magnet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  z-index: 2;
+
+  /* stronger top/right; balanced left/bottom; plus a very soft global edge vignette */
+  background:
+    /* LEFT */
+    linear-gradient(to right, rgba(0,0,0,0.20), transparent 55%)   left / 8% 100% no-repeat,
+    /* RIGHT (a touch stronger so it doesn't vanish on white) */
+    linear-gradient(to left,  rgba(0,0,0,0.28), transparent 55%)   right / 8% 100% no-repeat,
+    /* TOP (was highlight; darken slightly so it shows on bright skies) */
+    linear-gradient(to bottom, rgba(0,0,0,0.16), transparent 55%)  top / 100% 8% no-repeat,
+    /* BOTTOM */
+    linear-gradient(to top,   rgba(0,0,0,0.30), transparent 55%)   bottom / 100% 8% no-repeat,
+    /* tiny lip */
+    linear-gradient(to top,   rgba(0,0,0,0.50), transparent 70%)   bottom / 100% 5% no-repeat,
+    /* global edge vignette to keep bright photos from bleeding into the page */
+    radial-gradient(closest-side at 50% 50%,
+      transparent 66%,
+      rgba(0,0,0,0.08) 100%
+    );
+
+  /* ensures the darkening always “wins” on bright pixels without tinting colors */
+  mix-blend-mode: multiply;
+}
+
+/* 4) Shine stays the same (subtle) */
+.magnet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      200px 160px at var(--shine-x) var(--shine-y),
+      rgba(255,255,255,0.22),
+      rgba(255,255,255,0.08) 60%,
+      transparent 75%
+    );
+  filter: blur(6px);
+  transition: opacity 260ms ease;
+}
+
+.hover::after {
+  opacity: 1;
+}/* accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .magnet,
+  .magnet::after { transition: none !important; }
+}

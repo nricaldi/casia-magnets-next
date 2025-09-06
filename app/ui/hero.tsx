@@ -5,19 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Hero() {
-
-  const numImages = 9;
-  const images = [];
-  const imageSize = 500;
-
-  for (let i=0; i<numImages; i++) {
-    images.push({
-      size: imageSize,
-      url: `https://picsum.photos/${imageSize}`,
-      alt: 'Random Image'
-    });
-  };
-
   return (
     <section className={styles.hero}>
       {/* Curved design elements */}
@@ -50,37 +37,6 @@ export default function Hero() {
         </div>
 
       </div>
-
-        {/*
-
-        Image Gallery Grid
-
-          <div className={styles.galleryGrid}>
-            {images.map((image, index) => {
-              return (
-                <div className={`${styles.imageCard} ${styles.featured}`} key={index}>
-                  <Image
-                    className={styles.image}
-                    src={image.url}
-                    alt={`${image.alt} - ${index + 1}`}
-                    width={image.size}
-                    height={image.size}
-                  />
-                  <span className={styles.featuredTag}>Featured</span>
-                  <button className={styles.addButton}>+</button>
-                </div>
-              );
-            })}
-          </div>
-
-
-        <div className={styles.viewGallery}>
-          <Link href="/gallery" className={styles.viewGalleryButton}>
-            VIEW FULL GALLERY →
-          </Link>
-        </div>
-
-      */}
     </section>
   );
 }
