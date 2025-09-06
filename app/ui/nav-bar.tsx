@@ -9,8 +9,8 @@ export default function NavBar() {
 
   const [isActive, setIsActive] = useState(false);
 
-  const handleClick = (e) => {
-    setIsActive(!isActive);
+  const handleClick = () => {
+    setIsActive((prev) => !prev);
   };
 
   // <nav className={`${styles.navBar} ${isActive ? 'open' : ''}`}>

@@ -118,7 +118,8 @@ function Magnet({
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
         // set initial shine position out of view so it's invisible until hover
-        style={{ ["--shine-x" as any]: "-100%", ["--shine-y" as any]: "-100%" }}
+        // use CSS custom properties without any-casts
+        style={{ ["--shine-x" as string]: "-100%", ["--shine-y" as string]: "-100%" }}
       >
         <Image
           className={styles.image}
@@ -134,4 +135,3 @@ function Magnet({
     </div>
   );
 }
-
