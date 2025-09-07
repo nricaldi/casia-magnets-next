@@ -19,16 +19,18 @@ export default function Gallery() {
 
   return (
     <section className={styles.gallery}>
-      <div className={styles.galleryGrid}>
-        {images.map((image, i) => (
-          <Magnet key={i} image={image} />
-        ))}
-      </div>
+      <div className={styles.galleryContainer}>
+        <div className={styles.galleryGrid}>
+          {images.map((image, i) => (
+            <Magnet key={i} image={image} />
+          ))}
+        </div>
 
-      <div className={styles.viewGallery}>
-        <Link href="/" className={`button ${styles.viewGalleryButton}`}>
-          VIEW FULL GALLERY →
-        </Link>
+        <div className={styles.viewGallery}>
+          <Link href="/" className={`button ${styles.viewGalleryButton}`}>
+            VIEW FULL GALLERY →
+          </Link>
+        </div>
       </div>
     </section>
   );

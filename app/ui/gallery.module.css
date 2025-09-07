@@ -1,85 +1,82 @@
 .gallery {
   --border-radius: 6px;
+  --magnet-height: 3in;
+  --grid-gap: 2rem;
+  --overlap-distance: calc((var(--magnet-height) + var(--grid-gap)) * -1);
 
   background-color: var(--white);
   display: grid;
-  margin-top: -316px;
+  width: 100%;
 }
 
-/* layout */
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
-
-  grid-gap: 2rem;
+.galleryContainer {
   margin: 0 auto;
-  max-width: var(--max-container-width);
+  max-width: 900px;
+  position: relative;
+  top: var(--overlap-distance);
+  width: 100%;
   z-index: 4;
 }
 
-.imageCard {
-  position: relative;
-  perspective: 900px;              /* parent gives perspective */
-  -webkit-perspective: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* layout */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(2in, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
 }
 
-/* 1) Move the lift shadow to the container so it never blends with the image */
-.magnet {
+.imageCard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   position: relative;
-    /*
-    width: 300px;
-    height: 300px;
-   */
-  width: 100%;
+  perspective: 900px; /* parent gives perspective */
+  -webkit-perspective: 900px;
+}
 
-  border-radius: var(--border-radius);
-  overflow: hidden;
-
+.magnet {
   --shine-x: -100%;
   --shine-y: -100%;
+  --shine-size-x: 100px;
+  --shine-size-y: 100px;
+  --shine-peak: 0.05;
+  --shine-mid: 0.025;
   --scale: 1;
 
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: transform 200ms ease;
-
+  aspect-ratio: 1 / 1;
+  border-radius: var(--border-radius);
   /* OUTER real-world shadow (independent of image brightness) */
   filter:
     drop-shadow(0 8px 18px rgba(0,0,0,0.22))
     drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 200ms ease;
+  position: relative;
+  width: 100%;
+  will-change: transform;
 }
 
-/* keep the small pop on hover */
-.hover { --scale: 1.03; }
+.hover {
+  --scale: 1.025;
+}
 
-/* 2) Image itself: remove big box-shadows (now handled by container)
-      keep a hairline rim so bright photos have a readable edge */
 .image {
-  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.08), /* subtle 1px inner stroke that survives on bright images */
+    inset 0 0 14px rgba(0,0,0,0.14); /* faint vignette to keep edges from washing out */
   height: 100%;
   object-fit: cover;
-  border-radius: var(--border-radius);
-
-  /* subtle 1px inner stroke that survives on bright images */
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.08),
-    inset 0 0 14px rgba(0,0,0,0.14); /* faint vignette to keep edges from washing out */
   transform: translateZ(1px);
+  width: 100%;
 }
 
-/* 3) Chamfer / wrap layer — now using multiply so it reads on light pixels */
 .magnet::before {
   content: "";
-  position: absolute;
-  inset: 0;
   border-radius: var(--border-radius);
-  pointer-events: none;
-  z-index: 2;
-
-  /* stronger top/right; balanced left/bottom; plus a very soft global edge vignette */
   background:
     /* LEFT */
     linear-gradient(to right, rgba(0,0,0,0.20), transparent 55%)   left / 8% 100% no-repeat,
@@ -96,37 +93,41 @@
       transparent 66%,
       rgba(0,0,0,0.08) 100%
     );
-
-  /* ensures the darkening always “wins” on bright pixels without tinting colors */
-  mix-blend-mode: multiply;
+  inset: 0;
+  mix-blend-mode: multiply; /* ensures the darkening always “wins” on bright pixels without tinting colors */
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
 }
 
 /* 4) Shine stays the same (subtle) */
 .magnet::after {
   content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--border-radius);
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0;
-
   background:
     radial-gradient(
-      200px 160px at var(--shine-x) var(--shine-y),
-      rgba(255,255,255,0.22),
-      rgba(255,255,255,0.08) 60%,
-      transparent 75%
+      var(--shine-size-x) var(--shine-size-y) at var(--shine-x) var(--shine-y),
+      rgba(255,255,255,var(--shine-peak)),
+      rgba(255,255,255,var(--shine-mid)) 48%,
+      transparent 66%
     );
-  filter: blur(6px);
+  border-radius: var(--border-radius);
+  filter: blur(4px);
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
   transition: opacity 260ms ease;
+  z-index: 3;
 }
 
 .hover::after {
   opacity: 1;
-}/* accessibility */
+}
 
+/* accessibility */
 @media (prefers-reduced-motion: reduce) {
   .magnet,
-  .magnet::after { transition: none !important; }
+  .magnet::after {
+    transition: none !important;
+  }
 }
