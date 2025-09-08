@@ -1,19 +1,20 @@
 .gallery {
   --border-radius: 6px;
   --magnet-height: 3in;
-  --grid-gap: 2rem;
-  --overlap-distance: calc((var(--magnet-height) + var(--grid-gap)) * -1);
+  --gallery-padding: 2rem;
+  --overlap-distance: calc((var(--magnet-height) + var(--gallery-padding)) * -1);
 
   background-color: var(--white);
   display: grid;
   width: 100%;
+  padding: var(--gallery-padding);
 }
 
 .galleryContainer {
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 862.5px;
   position: relative;
-  top: var(--overlap-distance);
+  margin-top: var(--overlap-distance);
   width: 100%;
   z-index: 4;
 }
@@ -23,7 +24,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(2in, 1fr));
   gap: 2rem;
-  padding: 2rem;
   width: 100%;
 }
 
@@ -100,7 +100,6 @@
   z-index: 2;
 }
 
-/* 4) Shine stays the same (subtle) */
 .magnet::after {
   content: "";
   background:
@@ -130,4 +129,16 @@
   .magnet::after {
     transition: none !important;
   }
+}
+
+/* mobile */
+@media (hover: none) and (pointer: coarse) {
+  .hover::after {
+    opacity: .6;
+  }
+}
+
+.viewGalleryButton {
+  background-color: var(--black);
+  margin: 0 auto;
 }

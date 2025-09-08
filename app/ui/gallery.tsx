@@ -26,11 +26,9 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className={styles.viewGallery}>
-          <Link href="/" className={`button ${styles.viewGalleryButton}`}>
-            VIEW FULL GALLERY →
-          </Link>
-        </div>
+        <Link href="/" className={`button ${styles.viewGalleryButton}`}>
+          VIEW FULL GALLERY →
+        </Link>
       </div>
     </section>
   );

@@ -37,13 +37,17 @@ a {
 
 .button {
   display: flex;
-  border: 1px solid;
+  border: 1px solid var(--white);
   border-radius: 0.75rem;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.75rem 2rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   width: fit-content;
 }
 
+.button:hover {
+  color: var(--white);
+  background: transparent;
+}
