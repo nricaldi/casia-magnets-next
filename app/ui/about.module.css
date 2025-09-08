@@ -1,6 +1,7 @@
 .about {
   padding: 2rem;
-  padding-bottom: calc(2rem + var(--curve-radius));
+  padding-bottom: calc(2rem + var(--curve-radius) / 2);
+  padding-bottom: 4rem;
 }
 
 .aboutContainer {
@@ -9,6 +10,7 @@
   flex-direction: column;
   gap: 2rem;
   margin: 0 auto;
+  margin-top: calc((var(--curve-radius) / 2) * -1);
   max-width: var(--max-container-width);
 
   @media (min-width: 768px) {
@@ -40,7 +42,7 @@
 }
 
 .casiaPicture::before {
-  background-color: var(--gray-extra-dark);
+  background-color: var(--gray-dark);
   border-radius: 100%;
   content: '';
   height: 100%;

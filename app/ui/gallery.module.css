@@ -9,7 +9,7 @@
   border-top-left-radius: var(--curve-radius);
   display: grid;
   padding: var(--gallery-padding);
-  padding-bottom: calc(var(--gallery-padding) + var(--curve-radius));
+  padding-bottom: calc((var(--gallery-padding) + var(--curve-radius)) / 2);
   position: relative;
   top: calc(var(--curve-radius) * -1);
   width: 100%;

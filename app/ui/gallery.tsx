@@ -136,7 +136,8 @@ function Magnet({
         />
       </div>
 
-      {/* <span className={styles.featuredTag}>Featured</span>
+      {/* TODO - do we need these?
+          <span className={styles.featuredTag}>Featured</span>
           <button className={styles.addButton}>+</button>
       */}
     </div>

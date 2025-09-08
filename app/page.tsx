@@ -5,6 +5,7 @@ import NavBar from "./ui/nav-bar"
 import Hero from "./ui/hero"
 import Gallery from "./ui/gallery"
 import About from "./ui/about"
+import Footer from "./ui/footer"
 
 const highTide = localFont({
   display: 'swap',
@@ -48,9 +49,7 @@ export default function Home() {
 
       </main>
 
-      <footer className={styles.footer}>
-        footer
-      </footer>
+      <Footer />
     </div>
   );
 }
