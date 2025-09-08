@@ -33,11 +33,10 @@
 .main {
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 100%;
-}
-
-@media (max-width: 600px) {
-  .main {
+  z-index: 1;
+  @media (max-width: 600px) {
     align-items: center;
   }
 }

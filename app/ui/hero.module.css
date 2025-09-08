@@ -1,58 +1,14 @@
 
 .hero {
-  --curve-radius: 125px;
   --header-height: 88px;
 
-  background-color: var(--white);
+  background-color: var(--black);
   color: var(--white);
   height: calc(100svh - var(--header-height));
   max-height: 1440px;
   min-height: 750px;
   position: relative;
-  padding-bottom: var(--curve-radius);
   width: 100%;
-}
-
-.fluidBackground {
-  --header-height: 88px;
-
-  position: absolute;
-  height: calc(100% - var(--curve-radius));
-  width: 100%;
-  background-color: var(--black);
-  border-bottom-right-radius: var(--curve-radius);
-}
-
-.logo {
-  position: absolute;
-  top: 0;
-  left: -5%;
-  user-select: none;
-  pointer-events: none;
-  font-family: serif;
-  z-index: 1;
-}
-
-.curveBottom {
-  background: var(--white);
-  border-radius: 0 100% 0 0;
-  bottom: 0;
-  height: var(--curve-radius);
-  left: 0;
-  position: absolute;
-  transform: rotate(-90deg);
-  width: var(--curve-radius);
-  z-index: 1;
-}
-
-.boxBottom {
-  background: var(--black);
-  bottom: 0;
-  height: var(--curve-radius);
-  left: 0;
-  position: absolute;
-  width: var(--curve-radius);
-  z-index: 1;
 }
 
 .heroContentContainer {
@@ -69,7 +25,18 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: -12rem;
+  margin-top: calc((var(--curve-radius) + 4rem) * -1);
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: -50%;
+  left: -35%;
+  user-select: none;
+  pointer-events: none;
+  font-family: serif;
+  z-index: 1;
 }
 
 .heroContent * {
@@ -113,24 +80,8 @@
 
 @media (min-width: 768px) {
   .logo {
-    position: absolute;
-    top: 10%;
-    left: 5%;
     height: 600px;
     width: 600px;
-    user-select: none;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .heroContentContainer {
-    display: grid;
-    height: 100%;
-    margin: auto;
-    padding: 1rem;
-    place-items: center;
-    position: relative;
-    z-index: 2;
   }
 
   .title {
@@ -140,15 +91,6 @@
   .subtitle {
     font-size: 1rem;
     max-width: 450px;
-  }
-
-  .button {
-    padding: 0.75rem 2rem;
-    border-radius: 0.75rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
   }
 
   .ctaButton {
@@ -161,63 +103,4 @@
     font-size: 0.75rem;
     color: var(--gray-dark);
   }
-
 }
-
-
-/*
-
-.ctaButton {
-  background: white;
-  color: #1a1a1a;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-}
-
-.ctaButton:hover {
-  background: #f0f0f0;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .logo {
-    top: 5%;
-    left: 5%;
-  }
-
-  .fluidBackground {
-    border-bottom-right-radius: 150px;
-  }
-
-  .boxBottom {
-    bottom: -150px;
-    height: 150px;
-    width: 150px;
-  }
-
-  .curveBottom {
-    bottom: -150px;
-    height: 150px;
-    width: 150px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 4rem 1rem 2rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-}
-
-*/

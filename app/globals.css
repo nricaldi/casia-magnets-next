@@ -4,10 +4,18 @@
   --gray-light: #E4E5E8;
   --gray: #AEAEAE;
   --gray-dark: #696969;
+  --gray-extra-dark: #3D3D3D;
 
   --black: #0A0B0B;
 
+  --red: #630006FF;
+
   --max-container-width: 1000px;
+  --curve-radius: 75px;
+
+  @media (min-width: 768px) {
+    --curve-radius: 150px;
+  }
 }
 
 html,
@@ -39,7 +47,7 @@ a {
   display: flex;
   border: 1px solid var(--white);
   border-radius: 0.75rem;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0.75rem 2rem;
   text-decoration: none;
@@ -51,3 +59,4 @@ a {
   color: var(--white);
   background: transparent;
 }
+

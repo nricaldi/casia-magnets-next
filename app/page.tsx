@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import NavBar from "./ui/nav-bar"
 import Hero from "./ui/hero"
 import Gallery from "./ui/gallery"
+import About from "./ui/about"
 
 const highTide = localFont({
   display: 'swap',
@@ -42,6 +43,8 @@ export default function Home() {
         <Hero />
 
         <Gallery />
+
+        <About />
 
       </main>
 

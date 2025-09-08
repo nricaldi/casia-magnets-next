@@ -1,0 +1,64 @@
+.about {
+  padding: 2rem;
+  padding-bottom: calc(2rem + var(--curve-radius));
+}
+
+.aboutContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: var(--max-container-width);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.casiaPictureWrapper {
+  padding: 2rem;
+  filter: grayscale(1);
+}
+
+.casiaPicture {
+  background-color: var(--gray);
+  border-radius: 100%;
+  background-image: url('../../public/casia.png');
+  background-size: cover;
+  background-position: center;
+  height: 205px;
+  width: 150px;
+  position: relative;
+  right: -0.5rem;
+  top: 0.5rem;
+
+  @media (min-width: 350px) {
+    height: 375px;
+    width: 275px;
+  }
+}
+
+.casiaPicture::before {
+  background-color: var(--gray-extra-dark);
+  border-radius: 100%;
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  z-index: -1;
+}
+
+.aboutH2 {
+  margin-bottom: 1.5rem;
+}
+
+.aboutP {
+  margin-bottom: 1rem;
+}
+
+.aboutP:last-child {
+  margin-bottom: 0;
+}

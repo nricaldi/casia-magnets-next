@@ -30,6 +30,12 @@ export default function Gallery() {
           VIEW FULL GALLERY →
         </Link>
       </div>
+
+      <div className={styles.boxTop}></div>
+      <div className={styles.curveTop}></div>
+
+      <div className={styles.boxBottom}></div>
+      <div className={styles.curveBottom}></div>
     </section>
   );
 }
@@ -130,8 +136,9 @@ function Magnet({
         />
       </div>
 
-      <span className={styles.featuredTag}>Featured</span>
-      <button className={styles.addButton}>+</button>
+      {/* <span className={styles.featuredTag}>Featured</span>
+          <button className={styles.addButton}>+</button>
+      */}
     </div>
   );
 }
