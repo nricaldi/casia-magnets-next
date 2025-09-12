@@ -21,7 +21,7 @@ export default function Hero() {
             alt="Logo"
           />
 
-          <p className={styles.tagline}>Its the litle things that count</p>
+          <p className={styles.tagline}>{`It's the litle things that count`}</p>
           <h1 className={styles.title}>Small magnets. Big memories.</h1>
           <p className={styles.subtitle}>Choose from our curated gallery or upload your own. Printed, laminated, and ready to display. </p>
 

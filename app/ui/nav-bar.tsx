@@ -30,8 +30,6 @@ export default function NavBar() {
 
     <Link href="/" className={styles.navLink}>About</Link>
 
-    <Link href="/" className={styles.navLink}>Contact</Link>
-
     <Link href="/" className={styles.navLink}>CART</Link>
   </nav>
   );

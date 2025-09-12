@@ -2,6 +2,10 @@ import styles from './about.module.css';
 
 export default function About() {
 
+  const startDate = new Date(2022, 8, 13);
+  const now = new Date();
+  const yearsTogether = now.getFullYear() - startDate.getFullYear();
+
   return (
     <section className={styles.about}>
 
@@ -13,12 +17,17 @@ export default function About() {
 
         <div className={styles.aboutCopy}>
 
-          <h2 className={styles.aboutH2}>About Casia</h2>
+          <h2 className={styles.aboutH2}>About Casia Magnets</h2>
 
           <p className={styles.aboutP}>
-            Welcome to CASIA Magnets! We’re Carlo and Asia, the proud founders of this small but mighty magnet company.
-            Together, we’ve spent the last three years not only building our relationship but also combining our passions
+            Welcome to CASIA Magnets! We are Carlo and Asia, the proud founders of this small but mighty magnet company.
+            Together, we’ve spent the last { yearsTogether } years not only building our relationship but also combining our passions
             to bring you creative and customizable 2x2 magnets.
+          </p>
+
+          <p className={styles.aboutP}>
+            Our mission is simple: to give you a unique way to showcase what you love. Whether it’s a design of your choice
+            or one of our curated pop culture themes—from Marvel comics to NFL football—our magnets add a personal touch to your space.
           </p>
 
           <p className={styles.aboutP}>
