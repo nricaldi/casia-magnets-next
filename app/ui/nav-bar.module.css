@@ -8,10 +8,10 @@
   width: 2rem;
 
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.navBar.open {
+.navBar.open,
+.navBar.closing {
   align-items: flex-end;
   background-color: var(--black);
   border-radius: 2.5rem;
@@ -64,6 +64,8 @@
   flex-direction: column;
   gap: 4px;
   width: 30px;
+  position: relative;
+  z-index: 5;
 }
 
 .hamburgerLine {
@@ -77,8 +79,28 @@
   margin-left: auto;
 }
 
-.navLink {
+/* Smooth, lightweight animations for the menu content only */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
+  opacity: 0;
+  transform: translateY(-6px);
+  will-change: opacity, transform;
+  transition: opacity 220ms ease, transform 260ms ease;
+}
+
+.open .menu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* While closing, keep the container open-look but animate content out */
+.closing .menu {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
@@ -100,7 +122,24 @@
     width: auto;
   }
 
+  /* On desktop, show menu inline without transitions */
+  .menu {
+    flex-direction: row;
+    gap: 1rem;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .hamburger {
     display: none;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .menu {
+    transition: none;
+    transform: none;
   }
 }
