@@ -57,6 +57,12 @@
   margin-bottom: 1.5rem;
 }
 
+.aboutText {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
 .aboutP {
   margin-bottom: 1rem;
 }

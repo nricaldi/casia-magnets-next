@@ -1,6 +1,6 @@
 
 .hero {
-  --header-height: 88px;
+  --header-height: 104px;
 
   background-color: var(--black);
   color: var(--white);

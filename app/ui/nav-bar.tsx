@@ -3,12 +3,13 @@
 import styles from './nav-bar.module.css';
 import { LuShoppingCart } from "react-icons/lu";
 import Link from 'next/link';
-
 import React, { useState, useRef } from 'react';
+import { motion } from 'motion/react';
+import { usePrefersReducedMotion } from './motion-prefs';
 
 export default function NavBar() {
 
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -41,8 +42,15 @@ export default function NavBar() {
     setIsActive(false);
   };
 
+  const reduce = usePrefersReducedMotion();
+
   return (
-  <nav className={`${styles.navBar} ${isActive ? styles.open : ''} ${isClosing ? styles.closing : ''}`}>
+  <motion.nav
+    className={`${styles.navBar} ${isActive ? styles.open : ''} ${isClosing ? styles.closing : ''}`}
+    initial={{ opacity: reduce ? 1 : 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1], delay: reduce ? 0 : 0.0 }}
+  >
 
     <div
       className={styles.hamburger}
@@ -50,22 +58,63 @@ export default function NavBar() {
       onClick={handleClick}
       onBlur={disableMenu}
     >
-      <div className={styles.hamburgerLine}></div>
-      <div className={styles.hamburgerLine}></div>
-      <div className={styles.hamburgerLine}></div>
+      <motion.div
+        className={styles.hamburgerLine}
+        initial={{ opacity: reduce ? 1 : 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: reduce ? 0 : 0.24, ease: [0.22, 1, 0.36, 1], delay: reduce ? 0 : 0.06 }}
+      />
+      <motion.div
+        className={styles.hamburgerLine}
+        initial={{ opacity: reduce ? 1 : 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: reduce ? 0 : 0.24, ease: [0.22, 1, 0.36, 1], delay: reduce ? 0 : 0.10 }}
+      />
+      <motion.div
+        className={styles.hamburgerLine}
+        initial={{ opacity: reduce ? 1 : 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: reduce ? 0 : 0.24, ease: [0.22, 1, 0.36, 1], delay: reduce ? 0 : 0.14 }}
+      />
     </div>
 
     <div className={styles.menu}>
-      <Link href="#" className={styles.navLink}>Home</Link>
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.10 }}
+        className={styles.navLink}
+      >
+        <Link href="#" className={styles.navLink}>Home</Link>
+      </motion.span>
 
-      <Link href="#" className={styles.navLink}>Gallery</Link>
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.16 }}
+        className={styles.navLink}
+      >
+        <Link href="#" className={styles.navLink}>Gallery</Link>
+      </motion.span>
 
-      <Link href="/" className={styles.navLink}>About</Link>
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.22 }}
+        className={styles.navLink}
+      >
+        <Link href="/">About</Link>
+      </motion.span>
 
-      <Link href="/" className={styles.navLink}>
-        <LuShoppingCart />
-      </Link>
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.28 }}
+        className={styles.navLink}
+      >
+        <Link href="/"><LuShoppingCart /></Link>
+      </motion.span>
     </div>
-  </nav>
+  </motion.nav>
   );
 }

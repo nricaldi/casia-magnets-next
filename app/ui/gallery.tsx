@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { LuMoveRight } from "react-icons/lu";
 import { useRef } from "react";
+import FadeIn from "./fade-in";
+import Reveal from "./reveal";
 
 export default function Gallery() {
   const numImages = 9;
@@ -22,14 +24,29 @@ export default function Gallery() {
     <section className={styles.gallery}>
       <div className={styles.galleryContainer}>
         <div className={styles.galleryGrid}>
-          {images.map((image, i) => (
-            <Magnet key={i} image={image} />
-          ))}
+          {images.map((image, i) => {
+            if (i < 3) {
+              // Top three: reveal on initial load
+              return (
+                <FadeIn key={i} delay={0.02 + i * 0.04}>
+                  <Magnet image={image} />
+                </FadeIn>
+              );
+            }
+            // Rest: reveal on scroll into view
+            return (
+              <Reveal key={i} threshold={0.2} delay={0.01}>
+                <Magnet image={image} />
+              </Reveal>
+            );
+          })}
         </div>
 
-        <Link href="/" className={`button ${styles.viewGalleryButton}`}>
-          VIEW FULL GALLERY <LuMoveRight />
-        </Link>
+        <FadeIn delay={0.08 + images.length * 0.04}>
+          <Link href="/" className={`button ${styles.viewGalleryButton}`}>
+            VIEW FULL GALLERY <LuMoveRight />
+          </Link>
+        </FadeIn>
       </div>
 
       <div className={styles.boxTop}></div>

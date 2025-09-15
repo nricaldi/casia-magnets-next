@@ -84,7 +84,7 @@
 }
 
 .open .hamburgerLine:nth-child(2) {
-  opacity: 0;
+  opacity: 0 !important;
 }
 
 .open .hamburgerLine:nth-child(3) {
@@ -118,7 +118,6 @@
     font-size: 1rem;
     font-weight: 400;
     flex-direction: row;
-    gap: 1rem;
     height: auto;
     padding: 0;
     position: relative;
@@ -130,7 +129,7 @@
   /* On desktop, show menu inline without transitions */
   .menu {
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.5rem;
     opacity: 1;
     transform: none;
     transition: none;
@@ -150,13 +149,21 @@
 }
 
 .navLink {
-  padding: 0.5rem 1rem;
+  align-items: center;
   border-radius: 8px;
-  text-align: center;
-  transition: background-color 220ms ease;
+  color: var(--gray);
+  display: flex;
+  justify-content: center;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+.navLink a {
+  align-items: center;
+  display: flex;
+  padding: 0.5rem 1rem;
 }
 
 .navLink:hover {
   background-color: var(--gray-extra-dark);
+  color: var(--white);
 }
-

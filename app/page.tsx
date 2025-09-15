@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import localFont from 'next/font/local'
 
 import NavBar from "./ui/nav-bar"
+import FadeIn from "./ui/fade-in";
 import Hero from "./ui/hero"
 import Gallery from "./ui/gallery"
 import About from "./ui/about"
@@ -33,7 +34,9 @@ export default function Home() {
     <div className={styles.page}>
       <header className={styles.header}>
 
-        <h3 className={`${styles.typeLogo} ${highTide.className}`}>Casia Magnets</h3>
+        <FadeIn delay={0.02}>
+          <h3 className={`${styles.typeLogo} ${highTide.className}`}>Casia Magnets</h3>
+        </FadeIn>
 
         <NavBar />
 
