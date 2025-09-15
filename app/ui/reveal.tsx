@@ -53,7 +53,7 @@ export default function Reveal({
 
   return (
     <As
-      ref={ref as any}
+      ref={ref}
       className={className}
       initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : y }}
       animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : (reduce ? 0 : y) }}
