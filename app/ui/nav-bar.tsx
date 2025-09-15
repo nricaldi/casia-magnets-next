@@ -1,13 +1,14 @@
 "use client";
 
 import styles from './nav-bar.module.css';
+import { LuShoppingCart } from "react-icons/lu";
 import Link from 'next/link';
 
 import React, { useState, useRef } from 'react';
 
 export default function NavBar() {
 
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -55,13 +56,15 @@ export default function NavBar() {
     </div>
 
     <div className={styles.menu}>
-      <Link href="/" className={styles.navLink}>Home</Link>
+      <Link href="#" className={styles.navLink}>Home</Link>
 
-      <Link href="/" className={styles.navLink}>Gallery</Link>
+      <Link href="#" className={styles.navLink}>Gallery</Link>
 
       <Link href="/" className={styles.navLink}>About</Link>
 
-      <Link href="/" className={styles.navLink}>CART</Link>
+      <Link href="/" className={styles.navLink}>
+        <LuShoppingCart />
+      </Link>
     </div>
   </nav>
   );
