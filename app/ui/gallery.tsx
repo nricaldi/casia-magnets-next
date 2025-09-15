@@ -4,6 +4,7 @@ import "../globals.css";
 import styles from "./gallery.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { LuMoveRight } from "react-icons/lu";
 import { useRef } from "react";
 
 export default function Gallery() {
@@ -27,7 +28,7 @@ export default function Gallery() {
         </div>
 
         <Link href="/" className={`button ${styles.viewGalleryButton}`}>
-          VIEW FULL GALLERY →
+          VIEW FULL GALLERY <LuMoveRight />
         </Link>
       </div>
 

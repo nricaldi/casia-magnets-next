@@ -3,6 +3,7 @@ import styles from './hero.module.css';
 import logo from '../../public/logo.svg'
 import Link from 'next/link';
 import Image from 'next/image';
+import { LuMoveRight } from "react-icons/lu";
 
 export default function Hero() {
   return (
@@ -25,7 +26,7 @@ export default function Hero() {
           <h1 className={styles.title}>Small magnets. Big memories.</h1>
           <p className={styles.subtitle}>Choose from our curated gallery or upload your own. Printed, laminated, and ready to display. </p>
 
-          <Link href="/gallery" className={`button ${styles.ctaButton}`}>BUILD MY SET →</Link>
+          <Link href="/gallery" className={`button ${styles.ctaButton}`}>BUILD MY SET <LuMoveRight /></Link>
           <p className={styles.subText}>* One order includes <strong>9</strong> magnets &bull; <strong>$25 + shipping</strong></p>
         </div>
 
