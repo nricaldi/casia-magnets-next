@@ -5,7 +5,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import Link from 'next/link';
 import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { usePrefersReducedMotion } from './motion-prefs';
+import { usePrefersReducedMotion } from '../(motion)/motion-prefs';
 
 export default function NavBar() {
 
@@ -85,7 +85,7 @@ export default function NavBar() {
         transition={{ duration: 0.4, delay: 0.10 }}
         className={styles.navLink}
       >
-        <Link href="#" className={styles.navLink}>Home</Link>
+        <Link href="/" className={styles.navLink}>Home</Link>
       </motion.span>
 
       <motion.span
@@ -94,7 +94,7 @@ export default function NavBar() {
         transition={{ duration: 0.4, delay: 0.16 }}
         className={styles.navLink}
       >
-        <Link href="#" className={styles.navLink}>Gallery</Link>
+        <Link href="/gallery" className={styles.navLink}>Gallery</Link>
       </motion.span>
 
       <motion.span

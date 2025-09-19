@@ -1,46 +1,15 @@
+"use client"
+
 import styles from "./page.module.css";
-import localFont from 'next/font/local'
 
-import NavBar from "./ui/nav-bar"
-import FadeIn from "./ui/fade-in";
-import Hero from "./ui/hero"
-import Gallery from "./ui/gallery"
-import About from "./ui/about"
-import Footer from "./ui/footer"
-
-const highTide = localFont({
-  display: 'swap',
-  src: [
-    {
-      path: '../public/fonts/high-tide-regular.otf',
-      weight: '400',
-      style: 'regular'
-    },
-    {
-      path: '../public/fonts/high-tide-bold.otf',
-      weight: '600',
-      style: 'bold'
-    },
-    {
-      path: '../public/fonts/high-tide-sans.otf',
-      weight: '400',
-      style: 'sans'
-    },
-  ],
-});
+import Hero from "./ui/(main)/hero"
+import Gallery from "./ui/(main)/gallery"
+import About from "./ui/(main)/about"
 
 export default function Home() {
+
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-
-        <FadeIn delay={0.02}>
-          <h3 className={`${styles.typeLogo} ${highTide.className}`}>Casia Magnets</h3>
-        </FadeIn>
-
-        <NavBar />
-
-      </header>
 
       <main className={styles.main}>
 
@@ -52,7 +21,6 @@ export default function Home() {
 
       </main>
 
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import styles from './footer.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../../public/logo.svg';
 
 export default function Footer() {
   return (
@@ -10,7 +9,7 @@ export default function Footer() {
         <div className={styles.brand}>
           <Image
             className={styles.logo}
-            src={logo}
+            src="/logo.svg"
             alt="Casia Magnets"
             width={400}
             height={400}
@@ -56,4 +55,3 @@ export default function Footer() {
     </footer>
   );
 }
-

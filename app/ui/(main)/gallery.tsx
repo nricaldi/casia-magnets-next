@@ -1,15 +1,19 @@
 "use client";
 
-import "../globals.css";
+import "../../globals.css";
 import styles from "./gallery.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { LuMoveRight } from "react-icons/lu";
 import { useRef } from "react";
-import FadeIn from "./fade-in";
-import Reveal from "./reveal";
+import FadeIn from "../(motion)/fade-in";
+import Reveal from "../(motion)/reveal";
 
-export default function Gallery() {
+type GalleryProps = {
+  fullPage?: boolean;
+};
+
+export default function Gallery({ fullPage = false }: GalleryProps) {
   const numImages = 9;
   const imageSize = 300;
   const randNum = Math.random();
@@ -21,14 +25,14 @@ export default function Gallery() {
   }));
 
   return (
-    <section className={styles.gallery}>
+    <section className={`${styles.gallery} ${ fullPage ? styles.fullPage : '' }`}>
       <div className={styles.galleryContainer}>
         <div className={styles.galleryGrid}>
           {images.map((image, i) => {
             if (i < 3) {
               // Top three: reveal on initial load
               return (
-                <FadeIn key={i} delay={0.02 + i * 0.04}>
+                <FadeIn key={i} delay={0.02 + i * 0.04} y={0}>
                   <Magnet image={image} />
                 </FadeIn>
               );

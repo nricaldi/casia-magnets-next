@@ -1,10 +1,9 @@
-import '../globals.css';
+import '../../globals.css';
 import styles from './hero.module.css';
-import logo from '../../public/logo.svg'
 import Link from 'next/link';
 import Image from 'next/image';
 import { LuMoveRight } from "react-icons/lu";
-import FadeIn from './fade-in';
+import FadeIn from '../(motion)/fade-in';
 
 export default function Hero() {
   return (
@@ -18,7 +17,7 @@ export default function Hero() {
           <FadeIn delay={0.02} duration={0.6} y={0}>
             <Image
               className={styles.logo}
-              src={logo}
+              src="/logo.svg"
               width={500}
               height={500}
               alt="Logo"

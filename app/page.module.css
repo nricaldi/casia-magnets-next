@@ -15,21 +15,6 @@
   font-family: var(--font-geist-sans);
 }
 
-.header {
-  background-color: var(--black);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  width: 100%;
-
-  .typeLogo {
-    color: var(--white);
-    font-weight: 400;
-    font-size: 1.25rem;
-  }
-}
-
 .main {
   display: flex;
   flex-direction: column;

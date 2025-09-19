@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.gallery.fullPage {
+  top: 0;
+}
+
 .galleryContainer {
   margin: 0 auto;
   max-width: 862.5px;
@@ -22,6 +26,10 @@
   margin-top: var(--overlap-distance);
   width: 100%;
   z-index: 4;
+}
+
+.gallery.fullPage .galleryContainer {
+  margin-top: 0;
 }
 
   /* layout */
@@ -177,6 +185,11 @@
 .curveTop {
   background-color: var(--black);
   border-bottom-right-radius: var(--curve-radius);
+}
+
+.gallery.fullPage .boxTop,
+.gallery.fullPage .curveTop {
+  display: none;
 }
 
 .boxTop {
