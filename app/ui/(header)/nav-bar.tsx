@@ -3,7 +3,7 @@
 import styles from './nav-bar.module.css';
 import { LuShoppingCart } from "react-icons/lu";
 import Link from 'next/link';
-import React, { useState, useRef } from 'react';
+import React, { useEffect,useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { usePrefersReducedMotion } from '../(motion)/motion-prefs';
 
@@ -12,7 +12,7 @@ export default function NavBar() {
   const [isActive, setIsActive] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const navMenu = useRef(null);
+  const navMenu = useRef<HTMLDivElement | null>(null);
 
   const handleMenuClick = () => {
     // Clear any pending close timeouts to avoid race conditions
@@ -24,11 +24,6 @@ export default function NavBar() {
     if (!isActive && !isClosing) {
       // Start opening
       setIsActive(true);
-
-      document.addEventListener('click', (e) => {
-        const clickedNav = e.composedPath().includes(navMenu.current)
-        if (!clickedNav) setIsActive(false);
-      });
       return;
     }
 
@@ -36,6 +31,7 @@ export default function NavBar() {
       // Start closing with reverse animation on content
       setIsActive(false);
       setIsClosing(true);
+
       // Match CSS transition duration (max of opacity/transform)
       closeTimeoutRef.current = setTimeout(() => {
         setIsClosing(false);
@@ -43,6 +39,33 @@ export default function NavBar() {
       }, 300);
     }
   };
+
+  // Add/remove the outside-click listener whenever the menu is open/closed
+  useEffect(() => {
+    if (!isActive) return;
+
+    const onDocClick = (e: MouseEvent) => {
+      const menu = navMenu.current;
+      if (!menu) return;
+
+      // works with shadow DOM; fallback to contains for older envs
+      const inPath = typeof e.composedPath === "function"
+        ? e.composedPath().includes(menu)
+        : menu.contains(e.target as Node);
+
+      if (!inPath) setIsActive(false);
+    };
+
+    document.addEventListener("click", onDocClick);
+    return () => document.removeEventListener("click", onDocClick);
+  }, [isActive]);
+
+  // clear timeout on unmount just in case
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    };
+  }, []);
 
   const disableMenu = () => {
     setIsActive(false);
