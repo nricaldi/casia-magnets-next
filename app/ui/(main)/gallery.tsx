@@ -46,11 +46,13 @@ export default function Gallery({ fullPage = false }: GalleryProps) {
           })}
         </div>
 
-        <FadeIn delay={0.08 + images.length * 0.04}>
-          <Link href="/" className={`button ${styles.viewGalleryButton}`}>
-            VIEW FULL GALLERY <LuMoveRight />
-          </Link>
-        </FadeIn>
+        {!fullPage &&
+          <FadeIn delay={0.08 + images.length * 0.04}>
+            <Link href="/gallery" className={`button ${styles.viewGalleryButton}`}>
+              VIEW FULL GALLERY <LuMoveRight />
+            </Link>
+          </FadeIn>
+        }
       </div>
 
       <div className={styles.boxTop}></div>
