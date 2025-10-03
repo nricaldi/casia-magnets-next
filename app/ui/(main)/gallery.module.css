@@ -16,8 +16,10 @@
 }
 
 .gallery.fullPage {
-  top: 0;
+  --curve-radius: 2rem;
   --magnet-height: 1.5in;
+  padding-bottom: var(--gallery-padding);
+  top: 0;
 }
 
 .galleryContainer {
@@ -190,11 +192,6 @@
   border-bottom-right-radius: var(--curve-radius);
 }
 
-.gallery.fullPage .boxTop,
-.gallery.fullPage .curveTop {
-  display: none;
-}
-
 .boxTop {
   background-color: var(--white);
 }
@@ -206,7 +203,7 @@
 }
 
 .curveBottom {
-  background-color: var(--black);
+  background-color: var(--gray-extra-dark);
   border-top-left-radius: var(--curve-radius);
 }
 
