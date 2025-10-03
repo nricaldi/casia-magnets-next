@@ -14,7 +14,7 @@ type GalleryProps = {
 };
 
 export default function Gallery({ fullPage = false }: GalleryProps) {
-  const numImages = 9;
+  const numImages = fullPage ? 25 : 9;
   const imageSize = 300;
   const randNum = Math.random();
 

@@ -17,6 +17,7 @@
 
 .gallery.fullPage {
   top: 0;
+  --magnet-height: 1.5in;
 }
 
 .galleryContainer {
@@ -39,6 +40,9 @@
   gap: 2rem;
   width: 100%;
   margin-bottom: 2rem;
+}
+
+.gallery.fullPage .galleryGrid {
 }
 
 .imageCard {
