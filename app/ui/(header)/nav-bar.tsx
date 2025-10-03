@@ -12,8 +12,9 @@ export default function NavBar() {
   const [isActive, setIsActive] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const navMenu = useRef(null);
 
-  const handleClick = () => {
+  const handleMenuClick = () => {
     // Clear any pending close timeouts to avoid race conditions
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
@@ -23,6 +24,11 @@ export default function NavBar() {
     if (!isActive && !isClosing) {
       // Start opening
       setIsActive(true);
+
+      document.addEventListener('click', (e) => {
+        const clickedNav = e.composedPath().includes(navMenu.current)
+        if (!clickedNav) setIsActive(false);
+      });
       return;
     }
 
@@ -50,13 +56,13 @@ export default function NavBar() {
     initial={{ opacity: reduce ? 1 : 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1], delay: reduce ? 0 : 0.0 }}
+    ref={navMenu}
   >
 
     <div
       className={styles.hamburger}
       tabIndex={0}
-      onClick={handleClick}
-      onBlur={disableMenu}
+      onClick={handleMenuClick}
     >
       <motion.div
         className={styles.hamburgerLine}
@@ -84,6 +90,7 @@ export default function NavBar() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.10 }}
         className={styles.navLink}
+        onClick={disableMenu}
       >
         <Link href="/" className={styles.navLink}>Home</Link>
       </motion.span>
@@ -93,6 +100,7 @@ export default function NavBar() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.16 }}
         className={styles.navLink}
+        onClick={disableMenu}
       >
         <Link href="/gallery" className={styles.navLink}>Gallery</Link>
       </motion.span>
@@ -102,6 +110,7 @@ export default function NavBar() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.22 }}
         className={styles.navLink}
+        onClick={disableMenu}
       >
         <Link href="/">About</Link>
       </motion.span>
@@ -111,6 +120,7 @@ export default function NavBar() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.28 }}
         className={styles.navLink}
+        onClick={disableMenu}
       >
         <Link href="/"><LuShoppingCart /></Link>
       </motion.span>
