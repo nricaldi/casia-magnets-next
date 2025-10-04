@@ -1,6 +1,7 @@
 
 .navBar {
   border: solid 1px transparent;
+  box-shadow: 2px 4px 12px #00000014;
   color: var(--white);
   cursor: pointer;
   flex-direction: column;
@@ -28,9 +29,10 @@
   justify-content: center;
   overflow: visible;
   padding: 1.25rem;
+  padding-top: 1.25rem;
   position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
+  right: 0.25rem;
+  top: 0.5rem;
   width: auto;
   z-index: 5;
 }

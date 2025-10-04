@@ -2,7 +2,7 @@
 
 import localFont from 'next/font/local'
 import styles from './header.module.css';
-import FadeIn from "../(motion)/fade-in";
+import Link from 'next/link';
 import NavBar from "./nav-bar";
 
 const highTide = localFont({
@@ -31,9 +31,9 @@ export default function Header() {
   return (
     <header className={styles.header}>
 
-      <FadeIn delay={0.02}>
+      <Link href="/">
         <h3 className={`${styles.typeLogo} ${highTide.className}`}>Casia Magnets</h3>
-      </FadeIn>
+      </Link>
 
       <NavBar />
 
