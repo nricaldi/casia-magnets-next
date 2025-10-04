@@ -1,5 +1,5 @@
 .gallery {
-  --border-radius: 6px;
+  --border-radius: 9px;
   --magnet-height: 2in;
   --gallery-padding: 2rem;
   --overlap-distance: calc((var(--curve-radius) + (var(--gallery-padding) / 2)) * -1);
@@ -16,9 +16,9 @@
 }
 
 .gallery.fullPage {
-  --curve-radius: 50px;
+  --curve-radius: 41px;
   --magnet-height: 1.5in;
-  border-top-right-radius: var(--curve-radius);
+  border-radius: var(--curve-radius);
   margin-top: var(--header-height);
   padding-bottom: var(--gallery-padding);
   top: 0;
@@ -47,6 +47,7 @@
 }
 
 .gallery.fullPage .galleryGrid {
+  margin-bottom: 0;
 }
 
 .imageCard {
@@ -213,7 +214,9 @@
   background: var(--white);
 }
 
+.gallery.fullPage .boxBottom,
 .gallery.fullPage .boxTop,
+.gallery.fullPage .curveBottom,
 .gallery.fullPage .curveTop {
   display: none;
 }
