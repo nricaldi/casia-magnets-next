@@ -10,41 +10,13 @@ import { usePrefersReducedMotion } from '../(motion)/motion-prefs';
 export default function NavBar() {
 
   const [isActive, setIsActive] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const navMenu = useRef<HTMLDivElement | null>(null);
-
-  const handleMenuClick = () => {
-    // Clear any pending close timeouts to avoid race conditions
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-
-    if (!isActive && !isClosing) {
-      // Start opening
-      setIsActive(true);
-      return;
-    }
-
-    if (isActive) {
-      // Start closing with reverse animation on content
-      setIsActive(false);
-      setIsClosing(true);
-
-      // Match CSS transition duration (max of opacity/transform)
-      closeTimeoutRef.current = setTimeout(() => {
-        setIsClosing(false);
-        closeTimeoutRef.current = null;
-      }, 300);
-    }
-  };
 
   // Add/remove the outside-click listener whenever the menu is open/closed
   useEffect(() => {
     if (!isActive) return;
 
-    const onDocClick = (e: MouseEvent) => {
+    const onDocumentClick = (e: MouseEvent) => {
       const menu = navMenu.current;
       if (!menu) return;
 
@@ -56,26 +28,23 @@ export default function NavBar() {
       if (!inPath) setIsActive(false);
     };
 
-    document.addEventListener("click", onDocClick);
-    return () => document.removeEventListener("click", onDocClick);
+    document.addEventListener("click", onDocumentClick);
+    return () => document.removeEventListener("click", onDocumentClick);
   }, [isActive]);
-
-  // clear timeout on unmount just in case
-  useEffect(() => {
-    return () => {
-      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    };
-  }, []);
 
   const disableMenu = () => {
     setIsActive(false);
+  };
+
+  const handleMenuClick = () => {
+    setIsActive(!isActive);
   };
 
   const reduce = usePrefersReducedMotion();
 
   return (
   <motion.nav
-    className={`${styles.navBar} ${isActive ? styles.open : ''} ${isClosing ? styles.closing : ''}`}
+    className={`${styles.navBar} ${isActive ? styles.open : ''}`}
     initial={{ opacity: reduce ? 1 : 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1], delay: reduce ? 0 : 0.0 }}
