@@ -1,10 +1,10 @@
 .header {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
-  border-radius: 39px;
+  border-radius: var(--header-border-radius);
   box-shadow: 2px 4px 12px #00000050;
   display: flex;
-  height: calc(var(--header-height) - .5rem);
+  height: var(--header-height);
   justify-content: space-between;
   padding: 1rem 1.75rem;
   position: fixed;
@@ -17,10 +17,6 @@
     color: var(--white);
     font-weight: 400;
     font-size: 1.25rem;
-  }
-
-  @media (min-width: 768px) {
-    border-radius: 50px;
   }
 }
 

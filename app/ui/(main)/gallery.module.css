@@ -16,10 +16,10 @@
 }
 
 .gallery.fullPage {
-  --curve-radius: 41px;
+  --curve-radius: calc(var(--header-border-radius) + 0.25rem);
   --magnet-height: 1.5in;
   border-radius: var(--curve-radius);
-  margin-top: var(--header-height);
+  margin-top: calc(var(--header-height) + 0.5rem);
   padding-bottom: var(--gallery-padding);
   top: 0;
 }

@@ -13,11 +13,12 @@
   --max-container-width: 1000px;
   --curve-radius: 75px;
 
-  --header-height: 84px;
+  --header-height: 60px;
+  --header-border-radius: calc(var(--header-height) / 2);
 
   @media (min-width: 768px) {
     --curve-radius: 155px;
-    --header-height: 104px;
+    --header-height: 80px;
   }
 }
 
