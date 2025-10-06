@@ -1,14 +1,23 @@
 :root {
-  --white: #FFFFFF;
+  --dark-bg-dark: hsl(0 0% 0%);
+  --dark-bg: hsl(0 0% 5%);
+  --dark-bg-light: hsl(0 0% 10%);
+  --dark-bg-text: hsl(0 0% 95%);
+  --dark-bg-text-muted: hsl(0 0% 50%);
 
-  --gray-light: #E4E5E8;
-  --gray: #AEAEAE;
-  --gray-dark: #696969;
-  --gray-extra-dark: #111;
+  --light-bg-dark: hsl(0, 0%, 90%);
+  --light-bg: hsl(0, 0%, 95%);
+  --light-bg-light: hsl(0, 0%, 100%);
+  --light-bg-text: hsl(0 0% 5%);
+  --light-bg-text-muted: hsl(0 0% 30%);
 
-  --black: #0A0B0B;
+  --red: oklch(0.3144 0.128 26.66);
 
-  --red: #630006FF;
+  --red-10: oklch(0.1 0.2 40);
+  --red-20: oklch(0.3 0.2 40);
+  --red-30: oklch(0.5 0.2 40);
+  --red-40: oklch(0.7 0.2 40);
+  --red-50: oklch(0.9 0.2 40);
 
   --max-container-width: 1000px;
   --curve-radius: 75px;
@@ -29,8 +38,8 @@ body {
 }
 
 body {
-  color: var(--white);
-  background: var(--black);
+  color: var(--dark-bg-text);
+  background: var(--dark-bg-dark);
   font-family: Poppins, Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,7 +59,8 @@ a {
 .button {
   align-items: center;
   display: flex;
-  border: 1px solid var(--white);
+  border-width: 1px;
+  border-style: solid;
   border-radius: 0.75rem;
   font-size: 1rem;
   font-weight: 600;

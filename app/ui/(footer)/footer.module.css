@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--gray-extra-dark, #111);
+  background-color: var(--dark-bg);
   width: 100%;
   padding: 4rem 0rem;
 }
@@ -46,7 +46,7 @@
 }
 
 .heading {
-  color: var(--white);
+  color: var(--dark-bg-text);
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -63,12 +63,12 @@
 }
 
 .link {
-  color: inherit;
+  color: var(--dark-bg-text-muted);
   text-decoration: none;
   transition: color 160ms ease;
 }
 
 .link:hover {
-  color: var(--white);
+  color: var(--dark-bg-text);
 }
 

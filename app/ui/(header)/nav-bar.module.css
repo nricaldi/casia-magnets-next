@@ -1,40 +1,61 @@
 .navBar {
   border: solid 1px transparent;
   box-shadow: 2px 4px 12px #00000014;
-  color: var(--white);
+  color: var(--dark-bg-text-muted);
   cursor: pointer;
   flex-direction: column;
   height: 19px;
   overflow: hidden;
   width: 2rem;
+
+  &.open {
+    align-items: flex-end;
+    backdrop-filter: blur(10px) brightness(1.1);
+    -webkit-backdrop-filter: blur(20px) brightness(1.1);
+    background-color: oklch(0 0 0 / 40%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: calc(var(--header-border-radius) - 0.25rem);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 600;
+    gap: 1.5rem;
+    height: auto;
+    justify-content: center;
+    overflow: visible;
+    padding: 1.25rem;
+    padding-top: 1rem;
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    width: auto;
+    z-index: 5;
+  }
+
 }
 
-.navBar.open {
-  align-items: flex-end;
-  backdrop-filter: blur(10px) brightness(1.1);
-  -webkit-backdrop-filter: blur(20px) brightness(1.1);
-  background-color: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: calc(var(--header-border-radius) - 0.25rem);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  color: var(--gray-light);
-  display: flex;
-  font-size: 1.5rem;
-  font-weight: 600;
-  gap: 1.5rem;
-  height: auto;
-  justify-content: center;
-  overflow: visible;
-  padding: 1.25rem;
-  padding-top: 1rem;
-  position: absolute;
-  right: 0.25rem;
-  top: 0.25rem;
-  width: auto;
-  z-index: 5;
+@media (min-width: 768px) {
+  .navBar,
+  .navBar.open {
+    background: none;
+    border: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 400;
+    flex-direction: row;
+    height: auto;
+    padding: 0;
+    position: relative;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
 }
+
 
 .hamburger {
   display: flex;
@@ -47,7 +68,7 @@
 }
 
 .hamburgerLine {
-  background-color: var(--gray-light);
+  background-color: var(--light-bg-light);
   border-radius: 3px;
   display: block;
   height: 3px;
@@ -91,24 +112,6 @@
 }
 
 @media (min-width: 768px) {
-
-  .navBar,
-  .navBar.open {
-    background: none;
-    border: none;
-    box-shadow: none;
-    display: flex;
-    font-size: 1rem;
-    font-weight: 400;
-    flex-direction: row;
-    height: auto;
-    padding: 0;
-    position: relative;
-    right: 0;
-    top: 0;
-    width: auto;
-  }
-
   /* On desktop, show menu inline without transitions */
   .menu {
     flex-direction: row;
@@ -133,32 +136,27 @@
 
 .navLink {
   align-items: center;
+  backdrop-filter: blur(20px) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) brightness(1.1);
   border-radius: 28px;
-  color: var(--white);
+  color: var(--dark-bg-text);
   display: flex;
   justify-content: center;
   transition: background-color 220ms ease, color 220ms ease;
   width: 100%;
 
-  backdrop-filter: blur(20px) brightness(1.1);
-  -webkit-backdrop-filter: blur(20px) brightness(1.1);
-
   @media (min-width: 768px) {
-    color: var(--gray);
+    color: var(--dark-bg-text-muted);
+
+    &:hover {
+      color: var(--light-bg-light);
+      background-color: var(--dark-bg-light);
+    }
   }
-}
 
-.navLink a {
-  align-items: center;
-  display: flex;
-  padding: 0.5rem 1rem;
-}
-
-.navLink:hover {
-  background-color: rgba(0, 0, 0, .25);
-
-  @media (min-width: 768px) {
-    background-color: var(--gray-extra-dark);
-    color: var(--white);
+  > a {
+    align-items: center;
+    display: flex;
+    padding: 0.5rem 1rem;
   }
 }

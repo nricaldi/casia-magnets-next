@@ -24,7 +24,7 @@
 }
 
 .casiaPicture {
-  background-color: var(--gray);
+  background-color: var(--dark-bg-dark);
   border-radius: 100%;
   background-image: url('../../../public/casia.png');
   background-size: cover;
@@ -42,7 +42,7 @@
 }
 
 .casiaPicture::before {
-  background-color: var(--gray-dark);
+  background-color: var(--dark-bg-light);
   border-radius: 100%;
   content: '';
   height: 100%;
