@@ -37,6 +37,16 @@
   margin-top: 0;
 }
 
+.galleryTitle {
+  color: var(--dark-bg-text);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.gallery.fullPage .galleryTitle {
+  color: var(--light-bg-text);
+}
+
   /* layout */
 .galleryGrid {
   display: grid;
@@ -191,7 +201,7 @@
 }
 
 .curveTop {
-  background-color: var(--dark-bg-dark);
+  background-color: var(--dark-bg);
   border-bottom-right-radius: var(--curve-radius);
 }
 

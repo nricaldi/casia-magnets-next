@@ -24,9 +24,15 @@ export default function Gallery({ fullPage = false }: GalleryProps) {
     alt: "Random Image",
   }));
 
+  const titleText = fullPage ? 'Gallery' : 'Featured';
+
   return (
     <section className={`${styles.gallery} ${ fullPage ? styles.fullPage : '' }`}>
       <div className={styles.galleryContainer}>
+
+        <h1 className={styles.galleryTitle}>{titleText}</h1>
+
+
         <div className={styles.galleryGrid}>
           {images.map((image, i) => {
             if (i < 3) {
@@ -45,15 +51,15 @@ export default function Gallery({ fullPage = false }: GalleryProps) {
             );
           })}
         </div>
-
-        {!fullPage &&
-          <FadeIn delay={0.08 + images.length * 0.04}>
-            <Link href="/gallery" className={`button ${styles.viewGalleryButton}`}>
-              VIEW FULL GALLERY <LuMoveRight />
-            </Link>
-          </FadeIn>
-        }
       </div>
+
+      {!fullPage &&
+        <FadeIn delay={0.08 + images.length * 0.04}>
+          <Link href="/gallery" className={`button ${styles.viewGalleryButton}`}>
+            VIEW FULL GALLERY <LuMoveRight />
+          </Link>
+        </FadeIn>
+      }
 
       <div className={styles.boxTop}></div>
       <div className={styles.curveTop}></div>
