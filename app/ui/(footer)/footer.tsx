@@ -11,8 +11,8 @@ export default function Footer() {
             className={styles.logo}
             src="/logo.svg"
             alt="Casia Magnets"
-            width={400}
-            height={400}
+            width={180}
+            height={160}
             priority={false}
           />
         </div>
