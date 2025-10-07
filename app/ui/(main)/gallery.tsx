@@ -30,8 +30,9 @@ export default function Gallery({ fullPage = false }: GalleryProps) {
     <section className={`${styles.gallery} ${ fullPage ? styles.fullPage : '' }`}>
       <div className={styles.galleryContainer}>
 
-        <h1 className={styles.galleryTitle}>{titleText}</h1>
-
+        <FadeIn delay={0.08}>
+          <h1 className={styles.galleryTitle}>{titleText}</h1>
+        </FadeIn>
 
         <div className={styles.galleryGrid}>
           {images.map((image, i) => {
