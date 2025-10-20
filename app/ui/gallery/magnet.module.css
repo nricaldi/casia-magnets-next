@@ -1,64 +1,3 @@
-.gallery {
-  --magnet-border-radius: 9px;
-  --magnet-height: 2in;
-  --gallery-padding: 2rem;
-  --overlap-distance: calc((var(--curve-radius) + (var(--gallery-padding) / 2)) * -1);
-
-  background-color: var(--light-bg);
-  border-bottom-right-radius: var(--curve-radius);
-  border-top-left-radius: var(--curve-radius);
-  display: grid;
-  padding: var(--gallery-padding);
-  padding-bottom: calc((var(--gallery-padding) + var(--curve-radius)) / 2);
-  position: relative;
-  top: calc(var(--curve-radius) * -1);
-  width: 100%;
-}
-
-.gallery.fullPage {
-  --curve-radius: calc(var(--header-border-radius) + 0.25rem);
-  --magnet-height: 1.5in;
-  border-radius: var(--curve-radius);
-  margin-top: calc(var(--header-height) + 0.5rem);
-  padding-bottom: var(--gallery-padding);
-  top: 0;
-}
-
-.galleryContainer {
-  margin: 0 auto;
-  max-width: 862.5px;
-  position: relative;
-  margin-top: var(--overlap-distance);
-  width: 100%;
-  z-index: 4;
-}
-
-.gallery.fullPage .galleryContainer {
-  margin-top: 0;
-}
-
-.galleryTitle {
-  color: var(--dark-bg-text);
-  font-weight: 400;
-  margin-bottom: 1rem;
-}
-
-.gallery.fullPage .galleryTitle {
-  color: var(--light-bg-text);
-}
-
-  /* layout */
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--magnet-height), 1fr));
-  gap: 2rem;
-  width: 100%;
-  margin-bottom: 2rem;
-}
-
-.gallery.fullPage .galleryGrid {
-  margin-bottom: 0;
-}
 
 .imageCard {
   align-items: center;
@@ -92,10 +31,6 @@
   position: relative;
   width: 100%;
   will-change: transform;
-}
-
-.hover {
-  --scale: 1.075;
 }
 
 .image {
@@ -154,6 +89,11 @@
   z-index: 3;
 }
 
+
+.hover {
+  --scale: 1.075;
+}
+
 .hover::after {
   opacity: 1;
 }
@@ -171,62 +111,4 @@
   .hover::after {
     opacity: .6;
   }
-}
-
-.viewGalleryButton {
-  background-color: var(--dark-bg-dark);
-  border-color: var(--dark-bg-dark);
-  margin: 0 auto;
-}
-
-.viewGalleryButton:hover {
-  color: var(--dark-bg-dark)
-}
-
-/* curves ;) */
-.boxBottom,
-.boxTop,
-.curveBottom,
-.curveTop {
-  height: var(--curve-radius);
-  position: absolute;
-  width: var(--curve-radius);
-  z-index: 1;
-}
-
-.boxTop,
-.curveTop {
-  top: calc(var(--curve-radius) * -1);
-  right: 0;
-}
-
-.curveTop {
-  background-color: var(--dark-bg);
-  border-bottom-right-radius: var(--curve-radius);
-}
-
-.boxTop {
-  background-color: var(--light-bg);
-}
-
-.curveBottom,
-.boxBottom {
-  bottom: calc(var(--curve-radius) * -1);
-  left: 0;
-}
-
-.curveBottom {
-  background-color: var(--dark-bg-dark);
-  border-top-left-radius: var(--curve-radius);
-}
-
-.boxBottom {
-  background: var(--light-bg);
-}
-
-.gallery.fullPage .boxBottom,
-.gallery.fullPage .boxTop,
-.gallery.fullPage .curveBottom,
-.gallery.fullPage .curveTop {
-  display: none;
 }

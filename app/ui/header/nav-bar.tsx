@@ -5,7 +5,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import Link from 'next/link';
 import React, { useEffect,useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { usePrefersReducedMotion } from '../(motion)/motion-prefs';
+import { usePrefersReducedMotion } from '../motion/motion-prefs';
 
 export default function NavBar() {
 

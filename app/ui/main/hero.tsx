@@ -3,7 +3,7 @@ import styles from './hero.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LuMoveRight } from "react-icons/lu";
-import FadeIn from '../(motion)/fade-in';
+import FadeIn from '../motion/fade-in';
 
 export default function Hero() {
   return (

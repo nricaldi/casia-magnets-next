@@ -1,81 +1,17 @@
-"use client";
 
-import "../../globals.css";
-import styles from "./gallery.module.css";
-import Link from "next/link";
+import styles from "./magnet.module.css";
 import Image from "next/image";
-import { LuMoveRight } from "react-icons/lu";
 import { useRef } from "react";
-import FadeIn from "../(motion)/fade-in";
-import Reveal from "../(motion)/reveal";
 
-type GalleryProps = {
-  fullPage?: boolean;
+type MagnetProps = {
+  image: {
+    size: number,
+    url: string,
+    alt: string
+  };
 };
 
-export default function Gallery({ fullPage = false }: GalleryProps) {
-  const numImages = fullPage ? 50 : 9;
-  const imageSize = 300;
-  const randNum = Math.random();
-
-  const images = Array.from({ length: numImages }, (_, i) => ({
-    size: imageSize,
-    url: `https://picsum.photos/${imageSize}?random=${i+randNum}`,
-    alt: "Random Image",
-  }));
-
-  const titleText = fullPage ? 'Gallery' : 'Featured';
-
-  return (
-    <section className={`${styles.gallery} ${ fullPage ? styles.fullPage : '' }`}>
-      <div className={styles.galleryContainer}>
-
-        <FadeIn delay={0.08}>
-          <h1 className={styles.galleryTitle}>{titleText}</h1>
-        </FadeIn>
-
-        <div className={styles.galleryGrid}>
-          {images.map((image, i) => {
-            if (i < 3) {
-              // Top three: reveal on initial load
-              return (
-                <FadeIn key={i} delay={0.02 + i * 0.04} y={0}>
-                  <Magnet image={image} />
-                </FadeIn>
-              );
-            }
-            // Rest: reveal on scroll into view
-            return (
-              <Reveal key={i} threshold={0.2} delay={0.01}>
-                <Magnet image={image} />
-              </Reveal>
-            );
-          })}
-        </div>
-      </div>
-
-      {!fullPage &&
-        <FadeIn delay={0.08 + images.length * 0.04}>
-          <Link href="/gallery" className={`button ${styles.viewGalleryButton}`}>
-            VIEW FULL GALLERY <LuMoveRight />
-          </Link>
-        </FadeIn>
-      }
-
-      <div className={styles.boxTop}></div>
-      <div className={styles.curveTop}></div>
-
-      <div className={styles.boxBottom}></div>
-      <div className={styles.curveBottom}></div>
-    </section>
-  );
-}
-
-function Magnet({
-  image,
-}: {
-  image: { size: number; url: string; alt: string };
-}) {
+export default function Magnet({ image, }: MagnetProps) {
   const elRef = useRef<HTMLDivElement | null>(null);
 
   // animation state kept in refs (no re-renders)
@@ -174,3 +110,4 @@ function Magnet({
     </div>
   );
 }
+

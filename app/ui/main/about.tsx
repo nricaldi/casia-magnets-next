@@ -1,5 +1,5 @@
 import styles from './about.module.css';
-import Reveal from '../(motion)/reveal';
+import Reveal from '../motion/reveal';
 
 export default function About() {
 
