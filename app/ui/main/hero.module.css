@@ -6,7 +6,7 @@
   max-height: 1440px;
   min-height: 750px;
   position: relative;
-  margin-top: var(--header-height);
+  padding-top: var(--header-height);
   width: 100%;
 }
 
