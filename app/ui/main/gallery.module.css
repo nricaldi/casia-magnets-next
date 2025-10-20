@@ -4,7 +4,8 @@
   --gallery-padding: 2rem;
   --overlap-distance: calc((var(--curve-radius) + (var(--gallery-padding) / 2)) * -1);
 
-  background-color: var(--light-bg);
+  color: var(--light-bg-text);
+  background-color: var(--light-bg-dark);
   border-bottom-right-radius: var(--curve-radius);
   border-top-left-radius: var(--curve-radius);
   display: grid;
@@ -40,14 +41,14 @@
 .galleryTitle {
   color: var(--dark-bg-text);
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .gallery.fullPage .galleryTitle {
   color: var(--light-bg-text);
 }
 
-  /* layout */
+/* layout */
 .galleryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--magnet-height), 1fr));
@@ -63,6 +64,7 @@
 .viewGalleryButton {
   background-color: var(--dark-bg-dark);
   border-color: var(--dark-bg-dark);
+  color: var(--dark-bg-text);
   margin: 0 auto;
 }
 
@@ -93,7 +95,7 @@
 }
 
 .boxTop {
-  background-color: var(--light-bg);
+  background-color: var(--light-bg-dark);
 }
 
 .curveBottom,
@@ -108,7 +110,7 @@
 }
 
 .boxBottom {
-  background: var(--light-bg);
+  background: var(--light-bg-dark);
 }
 
 .gallery.fullPage .boxBottom,

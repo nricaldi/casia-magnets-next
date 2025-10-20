@@ -8,7 +8,7 @@ export default function About() {
   const yearsTogether = now.getFullYear() - startDate.getFullYear();
 
   return (
-    <section className={styles.about}>
+    <section id="about" className={styles.about}>
 
       <div className={styles.aboutContainer}>
 

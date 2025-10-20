@@ -1,5 +1,8 @@
 
-import GalleryPage from '../ui/gallery/gallery-page';
+import "../globals.css";
+import FadeIn from "../ui/motion/fade-in";
+import GalleryGrid from "../ui/gallery/gallery-grid";
+import styles from "../ui/main/gallery.module.css";
 
 export default function Gallery() {
 
@@ -15,9 +18,16 @@ export default function Gallery() {
   }));
 
   return (
-    <section>
+    <section className={`${styles.gallery} ${styles.fullPage}`}>
 
-      <GalleryPage images={images} />
+      <div className={styles.galleryContainer}>
+
+        <FadeIn delay={0.08}>
+          <h1 className={styles.galleryTitle}>Gallery</h1>
+        </FadeIn>
+
+        <GalleryGrid images={images} />
+      </div>
 
     </section>
   );
