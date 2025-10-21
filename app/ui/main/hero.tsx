@@ -7,7 +7,7 @@ import FadeIn from '../motion/fade-in';
 
 export default function Hero() {
   return (
-    <section className={styles.hero}>
+    <section id="hero" className={styles.hero}>
 
       <div className={styles.heroContentContainer}>
 

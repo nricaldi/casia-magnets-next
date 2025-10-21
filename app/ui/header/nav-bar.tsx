@@ -84,7 +84,7 @@ export default function NavBar() {
         className={styles.navLink}
         onClick={disableMenu}
       >
-        <Link href="/" className={styles.navLink}>Home</Link>
+        <Link href="/#hero" className={styles.navLink}>Home</Link>
       </motion.span>
 
       <motion.span
