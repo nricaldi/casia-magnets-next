@@ -1,7 +1,7 @@
 "use client";
 
 import styles from './nav-bar.module.css';
-import { LuShoppingCart } from "react-icons/lu";
+import CartIcon from './cart-icon.tsx';
 import Link from 'next/link';
 import React, { useEffect,useState, useRef } from 'react';
 import { motion } from 'motion/react';
@@ -114,7 +114,7 @@ export default function NavBar() {
         className={styles.navLink}
         onClick={disableMenu}
       >
-        <Link href="/"><LuShoppingCart /></Link>
+        <Link href="/"><CartIcon /></Link>
       </motion.span>
     </div>
   </motion.nav>
