@@ -1,4 +1,3 @@
-
 import "../globals.css";
 import FadeIn from "../ui/motion/fade-in";
 import GalleryGrid from "../ui/gallery/gallery-grid";
