@@ -1,7 +1,7 @@
 "use client";
 
 import styles from './nav-bar.module.css';
-import CartIcon from './cart-icon.tsx';
+import CartIcon from './cart-icon';
 import Link from 'next/link';
 import React, { useEffect,useState, useRef } from 'react';
 import { motion } from 'motion/react';

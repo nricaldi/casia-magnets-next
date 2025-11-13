@@ -1,5 +1,5 @@
 import style from './cart-icon.module.css';
-import { useCart } from '../../providers/cart-provider.tsx';
+import { useCart } from '../../providers/cart-provider';
 import { LuShoppingCart } from 'react-icons/lu';
 
 export default function CartIcon() {
