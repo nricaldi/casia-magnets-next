@@ -13,10 +13,10 @@ type CartAction =
   // | { type: 'qtyChanged'; id: number; quantity: number }
   | { type: 'cleared' };
 
-export const CartContext = createContext<CartStatel>([]);
-export const CartDispatchContext = createContext<React.Dispatch<CartAction>>(null);
+export const CartContext = createContext<CartState>([]);
+export const CartDispatchContext = createContext<React.Dispatch<CartAction> | null>(null);
 
-export function CartProvider ({ children }) {
+export function CartProvider ({ children }: { children: React.ReactNode }) {
   const [magnets, dispatch] = useReducer(cartReducer, initialMagnets);
 
   return (
@@ -36,12 +36,13 @@ export function useCartDispatch () {
   return useContext(CartDispatchContext);
 };
 
-function addMagnet (magnets: CartState, newMagnet:CartItem) {
+function addMagnet (magnets: CartState, newMagnet:{ id: number, url: string }): CartState {
   // handle if the magnet is already in the cart (increment the quantity
   return [...magnets, {
     type: 'magnet',
     id: newMagnet.id,
-    url: newMagnet.url
+    url: newMagnet.url,
+    quantity: 1
   }];
 };
 
@@ -49,17 +50,17 @@ function removeMagnet (magnets: CartState, id: number) {
   return magnets.filter((magnet) => magnet.id !== id);
 };
 
-function cartReducer (magnets: CartState, action: CartAction): CartState | Error {
+function cartReducer (magnets: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'added': { return addMagnet(magnets, action.item); }
     case 'removed': { return removeMagnet(magnets, action.id); }
     case 'cleared': { return []; }
-    default: { throw Error(`Unknown action: ${action.type}`); }
+    default: { throw Error('Unknown action action type'); }
   };
 };
 
-const initialMagnets = [
-  { id: 0, url: '', quantity: 1 },
-  { id: 1, url: '', quantity: 2 },
-  { id: 2, url: '', quantity: 3 }
+const initialMagnets: CartState = [
+  { id: 0, type: 'magnet', url: '', quantity: 1 },
+  { id: 1, type: 'magnet', url: '', quantity: 2 },
+  { id: 2, type: 'magnet', url: '', quantity: 3 }
 ];

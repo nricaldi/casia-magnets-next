@@ -4,7 +4,7 @@ import { Poppins } from "next/font/google";
 import Header from "./ui/header/header"
 import Footer from "./ui/footer/footer"
 
-import { CartProviderWrapper } from "./providers/cart-provider-wrapper.tsx";
+import { CartProviderWrapper } from "./providers/cart-provider-wrapper";
 
 import "./globals.css";
 
