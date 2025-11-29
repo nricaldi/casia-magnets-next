@@ -17,7 +17,7 @@ export const CartContext = createContext<CartState>([]);
 export const CartDispatchContext = createContext<React.Dispatch<CartAction> | null>(null);
 
 export function CartProvider ({ children }: { children: React.ReactNode }) {
-  const [magnets, dispatch] = useReducer(cartReducer, initialMagnets);
+  const [magnets, dispatch] = useReducer(cartReducer, []);
 
   return (
     <CartContext value={magnets}>
@@ -37,7 +37,12 @@ export function useCartDispatch () {
 };
 
 function addMagnet (magnets: CartState, newMagnet:{ id: number, url: string }): CartState {
-  // handle if the magnet is already in the cart (increment the quantity
+  const magnet = magnets.find((magnet) => newMagnet.id === magnet.id);
+  if (magnet) {
+    magnet.quantity++;
+    return [...magnets];
+  }
+
   return [...magnets, {
     type: 'magnet',
     id: newMagnet.id,
@@ -58,9 +63,3 @@ function cartReducer (magnets: CartState, action: CartAction): CartState {
     default: { throw Error('Unknown action action type'); }
   };
 };
-
-const initialMagnets: CartState = [
-  { id: 0, type: 'magnet', url: '', quantity: 1 },
-  { id: 1, type: 'magnet', url: '', quantity: 2 },
-  { id: 2, type: 'magnet', url: '', quantity: 3 }
-];
