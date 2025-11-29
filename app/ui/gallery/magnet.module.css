@@ -25,6 +25,7 @@
     5px 5px 15px 0 rgba(0, 0, 0, 0.05),
     0 8px 18px rgba(0,0,0,0.22),
     0 2px 4px rgba(0,0,0,0.18);
+  margin-bottom: 0.75rem;
   overflow: hidden;
   transform-style: preserve-3d;
   transition: transform 150ms ease;
@@ -89,7 +90,6 @@
   z-index: 3;
 }
 
-
 .hover {
   --scale: 1.075;
 }
@@ -112,3 +112,23 @@
     opacity: .6;
   }
 }
+
+.addButton {
+  --magnet-padding: 8px;
+
+  all: unset;
+  background-color: var(--red);
+  border-radius: 8px;
+  border: solid 1px var(--red);
+  color: var(--light-bg-light);
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 1rem;
+  transition: background-color 250ms ease, border-color 250ms ease;
+
+  &:hover {
+    background-color: var(--red-20);
+    border-color: var(--red-20);
+  }
+}
+

@@ -1,10 +1,13 @@
+"use client"
 
 import styles from "./magnet.module.css";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { useCartDispatch } from "../../providers/cart-provider";
 
 type MagnetProps = {
   image: {
+    id: number,
     size: number,
     url: string,
     alt: string
@@ -82,6 +85,19 @@ export default function Magnet({ image, }: MagnetProps) {
     startRAF();
   };
 
+
+  const dispatch = useCartDispatch();
+  const handleClick = () => {
+    dispatch({
+      type: 'added',
+      item: {
+        id: image.id,
+        url: image.url
+      }
+    });
+  };
+
+
   return (
     <div className={styles.imageCard}>
       <div
@@ -102,11 +118,8 @@ export default function Magnet({ image, }: MagnetProps) {
           height={image.size}
         />
       </div>
+      <button className={styles.addButton} onClick={handleClick}>Add to cart</button>
 
-      {/* TODO - do we need these?
-          <span className={styles.featuredTag}>Featured</span>
-          <button className={styles.addButton}>+</button>
-      */}
     </div>
   );
 }

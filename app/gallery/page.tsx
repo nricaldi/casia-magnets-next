@@ -11,6 +11,7 @@ export default function Gallery() {
   const randNum = Math.random();
 
   const images = Array.from({ length: numImages }, (_, i) => ({
+    id: i,
     size: imageSize,
     url: `https://picsum.photos/${imageSize}?random=${i+randNum}`,
     alt: "Random Image",
