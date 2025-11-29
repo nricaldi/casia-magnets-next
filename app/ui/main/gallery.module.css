@@ -1,5 +1,5 @@
 .gallery {
-  --magnet-border-radius: 9px;
+  --magnet-border-radius: 12px;
   --magnet-height: 2in;
   --gallery-padding: 2rem;
   --overlap-distance: calc((var(--curve-radius) + (var(--gallery-padding) / 2)) * -1);
@@ -18,7 +18,6 @@
 
 .gallery.fullPage {
   --curve-radius: calc(var(--header-border-radius) + 0.25rem);
-  --magnet-height: 1.5in;
   border-radius: var(--curve-radius);
   margin-top: calc(var(--header-height) + 0.5rem);
   padding-bottom: var(--gallery-padding);
@@ -35,6 +34,7 @@
 }
 
 .gallery.fullPage .galleryContainer {
+  max-width: 1200px;
   margin-top: 0;
 }
 
