@@ -1,16 +1,13 @@
 import { createContext, useContext, useReducer } from 'react';
+import type { Image as MagnetImage } from "../types/image";
 
-type CartItem = {
-  type: 'magnet'
-  id: number,
-  url: string,
+type CartItem = MagnetImage & {
   quantity: number
 };
 type CartState = CartItem[];
 type CartAction =
-  | { type: 'added'; item: { id: number; url: string } }
+  | { type: 'added'; item: MagnetImage }
   | { type: 'removed'; id: number }
-  // | { type: 'qtyChanged'; id: number; quantity: number }
   | { type: 'cleared' };
 
 export const CartContext = createContext<CartState>([]);
@@ -38,17 +35,20 @@ export function useCartDispatch () {
   return useContext(CartDispatchContext);
 };
 
-function addMagnet (magnets: CartState, newMagnet:{ id: number, url: string }): CartState {
+function addMagnet (magnets: CartState, newMagnet: MagnetImage ): CartState {
   const magnet = magnets.find((magnet) => newMagnet.id === magnet.id);
   if (magnet) {
-    magnet.quantity++;
-    return [...magnets];
+    return [...magnets.filter(({ id }) => id !== newMagnet.id), {
+      ...magnet,
+      quantity: magnet.quantity + 1
+    }];
   }
 
   return [...magnets, {
-    type: 'magnet',
     id: newMagnet.id,
     url: newMagnet.url,
+    size: newMagnet.size,
+    alt: newMagnet.alt,
     quantity: 1
   }];
 };

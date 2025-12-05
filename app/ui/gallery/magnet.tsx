@@ -88,7 +88,9 @@ export default function Magnet({ image }: MagnetProps) {
       type: 'added',
       item: {
         id: image.id,
-        url: image.url
+        url: image.url,
+        size: image.size,
+        alt: image.alt
       }
     });
   };
