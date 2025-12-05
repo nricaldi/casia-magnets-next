@@ -2,19 +2,15 @@
 
 import styles from "./magnet.module.css";
 import Image from "next/image";
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 import { useCartDispatch } from "../../providers/cart-provider";
+import type { Image as MagnetImage } from "../../types/image";
 
 type MagnetProps = {
-  image: {
-    id: number,
-    size: number,
-    url: string,
-    alt: string
-  };
+  image: MagnetImage
 };
 
-export default function Magnet({ image, }: MagnetProps) {
+export default function Magnet({ image }: MagnetProps) {
   const elRef = useRef<HTMLDivElement | null>(null);
 
   // animation state kept in refs (no re-renders)

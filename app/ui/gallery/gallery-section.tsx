@@ -6,13 +6,10 @@ import { LuMoveRight } from "react-icons/lu";
 import FadeIn from "../motion/fade-in";
 import GalleryGrid from "./gallery-grid";
 import styles from "../main/gallery.module.css";
+import type { Image as MagnetImage } from "../../types/image";
 
 type GallerySectionProps = {
-  images: {
-    size: number,
-    url: string,
-    alt: string
-  }[]
+  images: MagnetImage[]
 };
 
 export default function GallerySection({ images }: GallerySectionProps) {

@@ -4,13 +4,10 @@ import FadeIn from "../motion/fade-in";
 import Reveal from "../motion/reveal";
 import Magnet from "../gallery/magnet";
 import styles from "../main/gallery.module.css";
+import type { Image as MagnetImage} from "../../types/image";
 
 type GalleryGridProps = {
-  images: {
-    size: number,
-    url: string,
-    alt: string
-  }[]
+  images: MagnetImage[]
 };
 
 export default function GalleryGrid({ images }: GalleryGridProps) {

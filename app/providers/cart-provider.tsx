@@ -14,7 +14,9 @@ type CartAction =
   | { type: 'cleared' };
 
 export const CartContext = createContext<CartState>([]);
-export const CartDispatchContext = createContext<React.Dispatch<CartAction> | null>(null);
+export const CartDispatchContext = createContext<React.Dispatch<CartAction>>(() => {
+  throw new Error('Dispatch must be used within CartProvider');
+});
 
 export function CartProvider ({ children }: { children: React.ReactNode }) {
   const [magnets, dispatch] = useReducer(cartReducer, []);
