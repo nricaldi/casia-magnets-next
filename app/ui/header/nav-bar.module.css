@@ -48,6 +48,7 @@
     font-weight: 400;
     flex-direction: row;
     height: auto;
+    overflow: visible;
     padding: 0;
     position: relative;
     right: 0;
@@ -55,7 +56,6 @@
     width: auto;
   }
 }
-
 
 .hamburger {
   display: flex;
