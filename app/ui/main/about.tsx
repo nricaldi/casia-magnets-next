@@ -3,7 +3,7 @@ import Reveal from '../motion/reveal';
 
 export default function About() {
 
-  const startDate = new Date(2022, 8, 13);
+  const startDate = new Date(2021, 8, 13);
   const now = new Date();
   const yearsTogether = now.getFullYear() - startDate.getFullYear();
 

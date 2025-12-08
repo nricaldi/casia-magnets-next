@@ -32,13 +32,10 @@ export default function Footer() {
             <h3 className={styles.heading}>Social</h3>
             <ul className={styles.list}>
               <li>
-                <a className={styles.link} href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a className={styles.link} href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram CM</a>
               </li>
               <li>
-                <a className={styles.link} href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-              </li>
-              <li>
-                <a className={styles.link} href="https://x.com" target="_blank" rel="noopener noreferrer">X</a>
+                <a className={styles.link} href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram WSH</a>
               </li>
             </ul>
           </div>
@@ -46,8 +43,7 @@ export default function Footer() {
           <div className={styles.column}>
             <h3 className={styles.heading}>Contact</h3>
             <ul className={styles.list}>
-              <li><a className={styles.link} href="mailto:hello@casiamagnets.com">hello@casiamagnets.com</a></li>
-              <li><a className={styles.link} href="tel:+15555555555">(555)-555-5555</a></li>
+              <li><a className={styles.link} href="mailto:hello@casiamagnets.com">adclaros@gmail.com</a></li>
             </ul>
           </div>
         </nav>
