@@ -14,7 +14,7 @@ type CartContextValue = {
   quantityById: Map<number, number>
 };
 
-export const CartContext = createContext<CartState>({ magnets: [], quantityById: {} });
+export const CartContext = createContext<CartContextValue>({ magnets: [], quantityById: new Map() });
 export const CartDispatchContext = createContext<React.Dispatch<CartAction>>(() => {
   throw new Error('Dispatch must be used within CartProvider');
 });
@@ -51,7 +51,7 @@ export function useCartDispatch () {
 };
 
 function addMagnet (magnets: CartState, newMagnet: MagnetImage ): CartState {
-  const magnet = magnets.find((magnet) => newMagnet.id === magnet.id);
+  const magnet = magnets.find(({ id }) => newMagnet.id === id);
   if (magnet) {
     return [...magnets.filter(({ id }) => id !== newMagnet.id), {
       ...magnet,
@@ -68,8 +68,19 @@ function addMagnet (magnets: CartState, newMagnet: MagnetImage ): CartState {
   }];
 };
 
-function removeMagnet (magnets: CartState, id: number) {
-  return magnets.filter((magnet) => magnet.id !== id);
+function removeMagnet (magnets: CartState, magnetId: number) {
+  const magnet = magnets.find(({ id }) => magnetId === id);
+
+  if (!magnet) return magnets;
+
+  if (magnet?.quantity > 1) {
+    return [...magnets.filter(({ id }) => magnetId !== id), {
+      ...magnet,
+      quantity: magnet.quantity - 1
+    }]
+  }
+
+  return magnets.filter(({ id }) => magnetId !== id);
 };
 
 function cartReducer (magnets: CartState, action: CartAction): CartState {

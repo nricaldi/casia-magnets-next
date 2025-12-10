@@ -2,18 +2,42 @@
 
 import styles from "./magnet.module.css";
 import Image from "next/image";
-import { useRef } from "react";
-import { useCartDispatch } from "../../providers/cart-provider";
+import { useRef, useMemo } from "react";
+import { useCart, useCartDispatch } from "../../providers/cart-provider";
 import type { Image as MagnetImage } from "../../types/image";
+import MagnetStepper from "./magnet-stepper";
 
 type MagnetProps = {
   image: MagnetImage
 };
 
 export default function Magnet({ image }: MagnetProps) {
-  const elRef = useRef<HTMLDivElement | null>(null);
+  const { quantityById } = useCart();
+  const quantity = useMemo(() => {
+    return quantityById.get(image.id);
+  }, [quantityById, image]) || 0;
 
-  // animation state kept in refs (no re-renders)
+  const dispatch = useCartDispatch();
+  const onIncrement = () => {
+    dispatch({
+      type: 'added',
+      item: {
+        id: image.id,
+        url: image.url,
+        size: image.size,
+        alt: image.alt
+      }
+    });
+  };
+  const onDecrement = () => {
+    dispatch({
+      type: 'removed',
+      id: image.id
+    });
+  };
+
+  // Tilt Animation
+  const elRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
   const tiltCurrent = useRef({ x: 0, y: 0 });
   const tiltTarget = useRef({ x: 0, y: 0 });
@@ -81,21 +105,6 @@ export default function Magnet({ image }: MagnetProps) {
     startRAF();
   };
 
-
-  const dispatch = useCartDispatch();
-  const handleClick = () => {
-    dispatch({
-      type: 'added',
-      item: {
-        id: image.id,
-        url: image.url,
-        size: image.size,
-        alt: image.alt
-      }
-    });
-  };
-
-
   return (
     <div className={styles.imageCard}>
       <div
@@ -116,7 +125,12 @@ export default function Magnet({ image }: MagnetProps) {
           height={image.size}
         />
       </div>
-      <button className={styles.addButton} onClick={handleClick}>Add to cart</button>
+
+      {
+        quantity === 0
+        ? <button className={styles.addButton} onClick={onIncrement}>Add to cart</button>
+        : <MagnetStepper onIncrement={onIncrement} onDecrement={onDecrement} quantity={quantity}/>
+      }
 
     </div>
   );

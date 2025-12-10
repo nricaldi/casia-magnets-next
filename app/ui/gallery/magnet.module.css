@@ -114,13 +114,11 @@
 }
 
 .addButton {
-  --magnet-padding: 8px;
-
   all: unset;
   background-color: var(--red);
   border-radius: 8px;
   border: solid 1px var(--red);
-  color: var(--light-bg-light);
+  color: var(--dark-bg-text);
   cursor: pointer;
   font-size: 0.875rem;
   padding: 0.25rem 1rem;
@@ -130,5 +128,37 @@
     background-color: var(--red-20);
     border-color: var(--red-20);
   }
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
+.stepperButton {
+  all: unset;
+  background-color: var(--dark-bg-dark);
+  border-radius: 8px;
+  border: solid 1px var(--dark-bg-dark);
+  color: var(--dark-bg-text);
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 1rem;
+  transition: background-color 250ms ease, border-color 250ms ease, color 250ms ease;
+
+  &:hover {
+    color: var(--light-bg-text);
+    background-color: var(--light-bg-dark);
+    border-color: var(--dark-bg-light);
+  }
+}
+
+.quantity {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 45px;
+  border-radius: 8px;
 }
 
