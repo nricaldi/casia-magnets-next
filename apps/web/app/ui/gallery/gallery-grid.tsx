@@ -2,7 +2,7 @@
 
 import FadeIn from "../motion/fade-in";
 import Reveal from "../motion/reveal";
-import Magnet from "../gallery/magnet";
+import Magnet from "./magnet";
 import styles from "../main/gallery.module.css";
 import type { Image as MagnetImage} from "../../types/image";
 
