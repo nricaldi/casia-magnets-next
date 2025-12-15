@@ -1,0 +1,8 @@
+[project]
+name = "api"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.2.1",
+    "shippo>=3.9.0",
+]
