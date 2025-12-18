@@ -7,7 +7,7 @@ export default function CartIcon() {
   const { quantityById } = useCart();
 
   const totalMagnetCount = useMemo(() => {
-    return quantityById.values().reduce((totalMagnetCount, quantity) => {
+    return Array.from(quantityById.values()).reduce((totalMagnetCount, quantity) => {
       return totalMagnetCount += quantity;
     }, 0);
   }, [quantityById]);
